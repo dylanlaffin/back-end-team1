@@ -3,7 +3,7 @@ package org.example.models;
 public enum Band {
 
     /**
-     * Enum of Bands available for jobRoles
+     * Enum of Bands available for jobRoles.
      */
     BAND1("20,000-30,000"),
     BAND2("30,001-36,000"),
@@ -12,10 +12,11 @@ public enum Band {
 
     private final String band;
 
-    Band(String band) {
+    Band(final String band) {
     this.band = band;
     }
-    public String getBand() {return this.band;};
+    public String getBand() {
+        return this.band; }
 }
 
 

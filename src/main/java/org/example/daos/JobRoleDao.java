@@ -15,23 +15,28 @@ import java.util.List;
 public class JobRoleDao {
 
     /**
-     * DAO method to getJobRoles from the database
+     * DAO method to getJobRoles from the database.
      *
      */
     public List<JobRole> getAllJobRoles() throws SQLException {
         List<JobRole> jobRoles = new ArrayList<>();
 
-        try(Connection connection = DatabaseConnector.getConnection()) {
+        try (Connection connection = DatabaseConnector.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(
-                    "Select jobRoleID, jobRoleName, jobRoleLocation, jobRoleCapability, jobRoleBand, jobRoleClosingDate from `jobRole`;");
-            while(resultSet.next()) {
+                    "Select jobRoleID, jobRoleName, jobRoleLocation,"
+                    + "jobRoleCapability, jobRoleBand,"
+                    + "jobRoleClosingDate from `jobRole`;");
+            while (resultSet.next()) {
                 JobRole jobRole = new JobRole(
                         resultSet.getInt("jobRoleID"),
                         resultSet.getString("jobRoleName"),
-                        Location.valueOf(resultSet.getString("jobRoleLocation")),
-                        Capability.valueOf(resultSet.getString("jobRoleCapability")),
-                        Band.valueOf(resultSet.getString("jobRoleBand")),
+                        Location.valueOf(
+                                resultSet.getString("jobRoleLocation")),
+                        Capability.valueOf(
+                                resultSet.getString("jobRoleCapability")),
+                        Band.valueOf(
+                                resultSet.getString("jobRoleBand")),
                         resultSet.getDate("jobRoleClosingDate"));
 
                 jobRoles.add(jobRole);
