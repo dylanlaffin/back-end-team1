@@ -13,18 +13,15 @@ public class AuthDao {
     public User getUser(final LoginRequest login) throws SQLException {
         try (Connection conn = DatabaseConnector.getConnection()) {
             String query = "SELECT Username, Password, RoleID FROM `User` "
-                    + "WHERE Username = ? AND Password = ?";
+                    + "WHERE Username = ?";
 
             PreparedStatement ps = conn.prepareStatement(query);
 
             ps.setString(1, login.getUsername());
-            String pwHashed = BCrypt.hashpw(login.getPassword(),
-                    BCrypt.gensalt(10));
-            ps.setString(2, pwHashed);
-
             ResultSet rs = ps.executeQuery();
 
-            if (rs.next()) {
+            if (rs.next() && BCrypt.checkpw(login.getPassword(),
+                    rs.getString("Password"))) {
                 return new User(
                         rs.getString("Username"),
                         rs.getString("Password"),
