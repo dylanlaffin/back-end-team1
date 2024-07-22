@@ -8,14 +8,15 @@ import java.util.List;
 public class JobRoleMapper {
 
     public static List<JobRoleResponse> mapJobRoleResponseList(
-            List<JobRole> jobRoleList) {
-        return  jobRoleList
+            List<JobRoleResponse> jobRoleResponseList) {
+        return  jobRoleResponseList
                 .stream()
-                .map(jobRole -> new JobRoleResponse(jobRole.getJobRoleName(),
-                        jobRole.getJobRoleLocation(),
-                        jobRole.getJobRoleCapability(),
-                        jobRole.getJobRoleBand(),
-                        jobRole.getJobRoleClosingDate()))
+                .map(jobRoleResponse -> new JobRoleResponse(
+                        jobRoleResponse.getJobRoleName(),
+                        jobRoleResponse.getJobRoleLocation(),
+                        jobRoleResponse.getJobRoleCapability(),
+                        jobRoleResponse.getJobRoleBand(),
+                        jobRoleResponse.getJobRoleClosingDate()))
                 .collect(Collectors.toList());
     }
 

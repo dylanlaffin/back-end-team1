@@ -2,7 +2,7 @@ package org.example.daos;
 
 import org.example.models.Band;
 import org.example.models.Capability;
-import org.example.models.JobRole;
+import org.example.models.JobRoleResponse;
 import org.example.models.Locations;
 
 import java.sql.Connection;
@@ -18,18 +18,17 @@ public class JobRoleDao {
      * DAO method to getJobRoles from the database.
      *
      */
-    public List<JobRole> getAllJobRoles() throws SQLException {
-        List<JobRole> jobRoles = new ArrayList<>();
+    public List<JobRoleResponse> getAllJobRoles() throws SQLException {
+        List<JobRoleResponse> jobRoleResponses = new ArrayList<>();
 
         try (Connection connection = DatabaseConnector.getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(
-                    "Select jobRoleID, jobRoleName, jobRoleLocation,"
+                    "Select jobRoleName, jobRoleLocation,"
                     + "jobRoleCapability, jobRoleBand,"
                     + "jobRoleClosingDate from `jobRole`;");
             while (resultSet.next()) {
-                JobRole jobRole = new JobRole(
-                        resultSet.getInt("jobRoleID"),
+                JobRoleResponse jobRoleResponse = new JobRoleResponse(
                         resultSet.getString("jobRoleName"),
                         Locations.valueOf(
                                 resultSet.getString("jobRoleLocation")),
@@ -39,9 +38,9 @@ public class JobRoleDao {
                                 resultSet.getString("jobRoleBand")),
                         resultSet.getDate("jobRoleClosingDate"));
 
-                jobRoles.add(jobRole);
+                jobRoleResponses.add(jobRoleResponse);
             }
         }
-        return jobRoles;
+        return jobRoleResponses;
     }
 }
