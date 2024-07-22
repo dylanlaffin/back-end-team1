@@ -4,14 +4,14 @@ import java.sql.Date;
 
 public class JobRoleResponse {
     private String jobRoleName;
-    private Location jobRoleLocation;
+    private Locations jobRoleLocation;
     private Capability jobRoleCapability;
     private Band jobRoleBand;
     private Date jobRoleClosingDate;
 
     public JobRoleResponse(
             final String jobRoleName,
-            final Location jobRoleLocation,
+            final Locations jobRoleLocation,
             final Capability jobRoleCapability,
             final Band jobRoleBand,
             final Date jobRoleClosingDate) {
@@ -30,11 +30,11 @@ public class JobRoleResponse {
         this.jobRoleName = jobRoleName;
     }
 
-    public Location getJobRoleLocation() {
+    public Locations getJobRoleLocation() {
         return jobRoleLocation;
     }
 
-    public void setJobRoleLocation(final Location jobRoleLocation) {
+    public void setJobRoleLocation(final Locations jobRoleLocation) {
         this.jobRoleLocation = jobRoleLocation;
     }
 

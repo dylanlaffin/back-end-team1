@@ -3,7 +3,7 @@ package org.example.daos;
 import org.example.models.Band;
 import org.example.models.Capability;
 import org.example.models.JobRole;
-import org.example.models.Location;
+import org.example.models.Locations;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,7 +31,7 @@ public class JobRoleDao {
                 JobRole jobRole = new JobRole(
                         resultSet.getInt("jobRoleID"),
                         resultSet.getString("jobRoleName"),
-                        Location.valueOf(
+                        Locations.valueOf(
                                 resultSet.getString("jobRoleLocation")),
                         Capability.valueOf(
                                 resultSet.getString("jobRoleCapability")),

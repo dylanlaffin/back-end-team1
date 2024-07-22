@@ -10,7 +10,7 @@ public class JobRole {
     @JsonProperty
     private String jobRoleName;
     @JsonProperty
-    private Location jobRoleLocation;
+    private Locations jobRoleLocation;
     @JsonProperty
     private Capability jobRoleCapability;
     @JsonProperty
@@ -21,7 +21,7 @@ public class JobRole {
     public JobRole(
             final int jobRoleID,
             final String jobRoleName,
-            final Location jobRoleLocation,
+            final Locations jobRoleLocation,
             final Capability jobRoleCapability,
             final Band jobRoleBand,
             final Date jobRoleClosingDate) {
@@ -49,11 +49,11 @@ public class JobRole {
         this.jobRoleName = jobRoleName;
     }
 
-    public Location getJobRoleLocation() {
+    public Locations getJobRoleLocation() {
         return jobRoleLocation;
     }
 
-    public void setJobRoleLocation(final Location jobRoleLocation) {
+    public void setJobRoleLocation(final Locations jobRoleLocation) {
         this.jobRoleLocation = jobRoleLocation;
     }
 

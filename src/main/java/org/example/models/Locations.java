@@ -1,6 +1,6 @@
 package org.example.models;
 
-public enum Location {
+public enum Locations {
 
     /**
      * Enum of locations available for jobRoles
@@ -13,7 +13,7 @@ public enum Location {
 
     private final String location;
 
-    Location(String location) {
+    Locations(String location) {
     this.location = location;
     }
     public String getLocation() {return this.location;};
