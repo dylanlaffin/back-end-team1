@@ -1,6 +1,5 @@
 package org.example.mappers;
 
-import org.example.models.JobRole;
 import org.example.models.JobRoleResponse;
 import java.util.stream.Collectors;
 import java.util.List;
