@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.List;
 
 public class JobRoleMapper {
+   private JobRoleMapper jobRoleMapper;
     /*
     maps the JobRoleResponse to a stream
     and then uses Collectors to convert the stream to a List
