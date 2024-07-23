@@ -1,7 +1,9 @@
-package org.example;
+package org.example.integration;
 
 import io.dropwizard.testing.junit5.DropwizardAppExtension;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
+import org.example.TestApplication;
+import org.example.TestConfiguration;
 import org.example.models.JobRoleResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
