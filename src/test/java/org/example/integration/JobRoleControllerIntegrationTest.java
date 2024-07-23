@@ -19,15 +19,15 @@ public class JobRoleControllerIntegrationTest {
     when calling getJobRoles
     expect list of JobRoleResponses
      */
-//    @Test
-//    void getJobRoles_shouldReturnListOfJobRoles() {
-//        Client client = APP.client();
-//
-//        List<JobRoleResponse> response = client
-//                .target("http://localhost:8080/api/jobRoles")
-//                .request()
-//                .get(List.class);
-//
-//        Assertions.assertFalse(response.isEmpty());
-//    }
+    @Test
+    void getJobRoles_shouldReturnListOfJobRoles() {
+        Client client = APP.client();
+
+        List<JobRoleResponse> response = client
+                .target("http://localhost:8080/api/jobRoles")
+                .request()
+                .get(List.class);
+
+        Assertions.assertFalse(response.isEmpty());
+    }
 }
