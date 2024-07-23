@@ -22,30 +22,31 @@ public class JobRoleDao {
     public List<JobRoleResponse> getAllJobRoles()
             throws SQLException, DatabaseConnectionException {
         List<JobRoleResponse> jobRoleResponses = new ArrayList<>();
-
         try (Connection connection = DatabaseConnector.getConnection()) {
-            assert connection != null;
-            Statement statement = connection.createStatement();
-            ResultSet resultSet;
-            resultSet = statement.executeQuery(
-                    "Select jobRoleName, jobRoleLocation,"
-                    + "jobRoleCapability, jobRoleBand,"
-                    + "jobRoleClosingDate from `jobRole`;");
-            while (resultSet.next()) {
-                JobRoleResponse jobRoleResponse = new JobRoleResponse(
-                        resultSet.getString("jobRoleName"),
-                        Locations.valueOf(
-                                resultSet.getString("jobRoleLocation")),
-                        Capability.valueOf(
-                                resultSet.getString("jobRoleCapability")),
-                        Band.valueOf(
-                                resultSet.getString("jobRoleBand")),
-                        resultSet.getDate("jobRoleClosingDate"));
+            if (connection != null) {
+                Statement statement = connection.createStatement();
 
-                jobRoleResponses.add(jobRoleResponse);
+                ResultSet resultSet;
+                resultSet = statement.executeQuery(
+                        "Select jobRoleName, jobRoleLocation,"
+                                + "jobRoleCapability, jobRoleBand,"
+                                + "jobRoleClosingDate from `jobRole`;");
+                while (resultSet.next()) {
+                    JobRoleResponse jobRoleResponse = new JobRoleResponse(
+                            resultSet.getString("jobRoleName"),
+                            Locations.valueOf(
+                                    resultSet.getString("jobRoleLocation")),
+                            Capability.valueOf(
+                                    resultSet.getString("jobRoleCapability")),
+                            Band.valueOf(
+                                    resultSet.getString("jobRoleBand")),
+                            resultSet.getDate("jobRoleClosingDate"));
+
+                    jobRoleResponses.add(jobRoleResponse);
+                }
+                return jobRoleResponses;
             }
+            return jobRoleResponses;
         }
-        return jobRoleResponses;
     }
-
 }
