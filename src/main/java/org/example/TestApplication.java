@@ -9,6 +9,7 @@ import org.example.controllers.JobRoleController;
 import org.example.daos.JobRoleDao;
 import org.example.services.JobRoleService;
 
+
 public class TestApplication extends Application<TestConfiguration> {
     public static void main(final String[] args) throws Exception {
         new TestApplication().run(args);
@@ -30,6 +31,7 @@ public class TestApplication extends Application<TestConfiguration> {
     @Override
     public void run(final TestConfiguration configuration,
                     final Environment environment) {
+
         environment.jersey().register(
                 new JobRoleController(new JobRoleService(new JobRoleDao())));
     }
