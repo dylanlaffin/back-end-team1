@@ -1,4 +1,4 @@
 package org.example.exceptions;
 
-public class DatabaseConnectionException extends Exception{
+public class DatabaseConnectionException extends Exception {
 }

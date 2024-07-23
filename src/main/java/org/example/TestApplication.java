@@ -10,6 +10,9 @@ import org.example.daos.JobRoleDao;
 import org.example.services.JobRoleService;
 
 public class TestApplication extends Application<TestConfiguration> {
+    /*
+    main methos of the TestApplication
+     */
     public static void main(final String[] args) throws Exception {
         new TestApplication().run(args);
     }

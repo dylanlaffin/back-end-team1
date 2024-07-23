@@ -14,12 +14,14 @@ import java.sql.SQLException;
 @Api("Team1-API")
 @Path("/api/jobRoles")
 public class JobRoleController {
-
-    JobRoleService jobRoleService;
+    /*
+    instatiates the JOb role services
+     */
+    private final JobRoleService jobRoleService;
 
     public JobRoleController(
-            final JobRoleService jobRoleService) {
-        this.jobRoleService = jobRoleService;
+            final JobRoleService jobRoleSrv) {
+        this.jobRoleService = jobRoleSrv;
     }
 
     @GET

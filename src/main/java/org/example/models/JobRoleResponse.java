@@ -3,31 +3,46 @@ package org.example.models;
 import java.sql.Date;
 
 public class JobRoleResponse {
+    /*
+    instantiates a string of Job Role Name in the Job Role Response
+     */
     private String jobRoleName;
+    /*
+    instantiates a ENUM of Job Role LOCATION in the Job Role Response
+     */
     private Locations jobRoleLocation;
+    /*
+    instantiates a ENUM of Job Role CAPABILITY in the Job Role Response
+     */
     private Capability jobRoleCapability;
+    /*
+    instantiates a ENUM of Job Role BAND in the Job Role Response
+     */
     private Band jobRoleBand;
+    /*
+    instantiates a Date of Job Role CLOSING Date in the Job Role Response
+     */
     private Date jobRoleClosingDate;
 
     public JobRoleResponse(
-            final String jobRoleName,
-            final Locations jobRoleLocation,
-            final Capability jobRoleCapability,
-            final Band jobRoleBand,
-            final Date jobRoleClosingDate) {
-        this.jobRoleName = jobRoleName;
-        this.jobRoleLocation = jobRoleLocation;
-        this.jobRoleCapability = jobRoleCapability;
-        this.jobRoleBand = jobRoleBand;
-        this.jobRoleClosingDate = jobRoleClosingDate;
+            final String jRName,
+            final Locations jRLocation,
+            final Capability jRCapability,
+            final Band jRBand,
+            final Date jRClosingDate) {
+        this.jobRoleName = jRName;
+        this.jobRoleLocation = jRLocation;
+        this.jobRoleCapability = jRCapability;
+        this.jobRoleBand = jRBand;
+        this.jobRoleClosingDate = jRClosingDate;
     }
 
     public String getJobRoleName() {
         return jobRoleName;
     }
 
-    public void setJobRoleName(final String jobRoleName) {
-        this.jobRoleName = jobRoleName;
+    public void setJobRoleName(final String jRName) {
+        this.jobRoleName = jRName;
     }
 
     public Locations getJobRoleLocation() {

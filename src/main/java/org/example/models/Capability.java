@@ -21,9 +21,12 @@ public enum Capability {
 
     private final String capability;
 
-    Capability(String capability) {
-        this.capability = capability;
+    Capability(final String capabilityName) {
+        this.capability = capabilityName;
     }
+    /*
+    the getCapability returns the Capability enum string
+     */
     public String getCapability() {
         return this.capability; };
 }

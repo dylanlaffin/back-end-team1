@@ -7,8 +7,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public final class DatabaseConnector {
+    /*
+    establishes the connection
+     */
     private static Connection conn;
+   /*
+   establishes the DatabaseConnector
+    */
     private DatabaseConnector() { }
+    /*
+    established the connection with the database
+     */
     public static Connection getConnection() throws SQLException,
             DatabaseConnectionException {
 

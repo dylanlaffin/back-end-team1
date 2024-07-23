@@ -18,11 +18,13 @@ public enum Band {
      * Enum of Band4 £42,001-£60,000 available for jobRoles.
      */
     BAND4("42,001-60,000");
-
+    /*
+    instantiates the band Enum
+     */
     private final String band;
 
-    Band(final String band) {
-    this.band = band;
+    Band(final String bandName) {
+    this.band = bandName;
     }
     public String getBand() {
         return this.band; }

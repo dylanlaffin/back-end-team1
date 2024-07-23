@@ -24,8 +24,10 @@ public class JobRoleDao {
         List<JobRoleResponse> jobRoleResponses = new ArrayList<>();
 
         try (Connection connection = DatabaseConnector.getConnection()) {
+            assert connection != null;
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(
+            ResultSet resultSet;
+            resultSet = statement.executeQuery(
                     "Select jobRoleName, jobRoleLocation,"
                     + "jobRoleCapability, jobRoleBand,"
                     + "jobRoleClosingDate from `jobRole`;");

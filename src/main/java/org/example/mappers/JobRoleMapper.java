@@ -5,9 +5,12 @@ import java.util.stream.Collectors;
 import java.util.List;
 
 public class JobRoleMapper {
-
+    /*
+    maps the JobRoleResponse to a stream
+    and then uses Collectors to convert the stream to a List
+     */
     public static List<JobRoleResponse> mapJobRoleResponseList(
-            List<JobRoleResponse> jobRoleResponseList) {
+            final List<JobRoleResponse> jobRoleResponseList) {
         return  jobRoleResponseList
                 .stream()
                 .map(jobRoleResponse -> new JobRoleResponse(
