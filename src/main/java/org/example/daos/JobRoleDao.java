@@ -1,5 +1,6 @@
 package org.example.daos;
 
+import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.Band;
 import org.example.models.Capability;
 import org.example.models.JobRoleResponse;
@@ -18,7 +19,8 @@ public class JobRoleDao {
      * DAO method to getJobRoles from the database.
      *
      */
-    public List<JobRoleResponse> getAllJobRoles() throws SQLException {
+    public List<JobRoleResponse> getAllJobRoles()
+            throws SQLException, DatabaseConnectionException {
         List<JobRoleResponse> jobRoleResponses = new ArrayList<>();
 
         try (Connection connection = DatabaseConnector.getConnection()) {
@@ -43,4 +45,5 @@ public class JobRoleDao {
         }
         return jobRoleResponses;
     }
+
 }

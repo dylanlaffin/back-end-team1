@@ -1,5 +1,7 @@
 package org.example.daos;
 
+import org.example.exceptions.DatabaseConnectionException;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,7 +9,8 @@ import java.sql.SQLException;
 public final class DatabaseConnector {
     private static Connection conn;
     private DatabaseConnector() { }
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws SQLException,
+            DatabaseConnectionException {
 
         if (conn != null && !conn.isClosed()) {
             return conn;

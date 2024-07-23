@@ -1,6 +1,7 @@
 package org.example.services;
 
 import org.example.daos.JobRoleDao;
+import org.example.exceptions.DatabaseConnectionException;
 import org.example.mappers.JobRoleMapper;
 import org.example.models.JobRoleResponse;
 
@@ -14,7 +15,8 @@ public class JobRoleService {
         this.jobRoleDao = jobRoleDao;
     }
 
-    public List<JobRoleResponse> getAllJobRoles() throws SQLException {
+    public List<JobRoleResponse> getAllJobRoles()
+            throws SQLException, DatabaseConnectionException {
         return JobRoleMapper.mapJobRoleResponseList(
                 jobRoleDao.getAllJobRoles());
     }

@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import io.swagger.annotations.Api;
+import org.example.exceptions.DatabaseConnectionException;
 import org.example.services.JobRoleService;
 
 import javax.ws.rs.GET;
@@ -27,7 +28,7 @@ public class JobRoleController {
         try {
             return Response.ok().entity(
                     jobRoleService.getAllJobRoles()).build();
-        } catch (SQLException e) {
+        } catch (SQLException | DatabaseConnectionException e) {
             return Response.serverError().build();
         }
     }
