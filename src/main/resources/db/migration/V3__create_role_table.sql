@@ -1,0 +1,8 @@
+CREATE TABLE Role(
+RoleID TINYINT NOT NULL,
+Name VARCHAR(64) NOT NULL,
+PRIMARY KEY (RoleID)
+);
+
+INSERT INTO Role(RoleID, Name) VALUES (1, "Admin");
+INSERT INTO Role(RoleID, Name) VALUES (2, "User");
