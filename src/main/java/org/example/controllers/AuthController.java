@@ -31,7 +31,7 @@ public class AuthController {
             return Response.serverError().build();
         } catch (InvalidException e) {
             return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(e.getMessage()).build();
+                    .entity("Username or Password Incorrect").build();
         }
     }
 }
