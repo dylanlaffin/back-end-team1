@@ -16,7 +16,7 @@ import java.util.List;
 public class JobRoleDao {
 
     /**
-     * DAO method to getJobRoles OPEN jobRoles from database
+     * DAO method to getJobRoles OPEN jobRoles from database.
      *
      */
     public List<OpenJobRoleResponse> getOpenJobRoles()
@@ -30,7 +30,8 @@ public class JobRoleDao {
                 resultSet = statement.executeQuery(
                         "Select jobRoleName, jobRoleLocation,"
                                 + "jobRoleCapability, jobRoleBand,"
-                                + "jobRoleClosingDate from `jobRole` where jobRoleOpen = true;");
+                                + "jobRoleClosingDate from `jobRole` "
+                                + "where jobRoleOpen = true;");
                 while (resultSet.next()) {
                     OpenJobRoleResponse
                             jobRoleResponse = new OpenJobRoleResponse(
