@@ -2,9 +2,7 @@ package org.example.service;
 
 import io.jsonwebtoken.Jwts;
 import org.example.Exceptions.InvalidException;
-import org.example.controllers.AuthController;
 import org.example.daos.AuthDao;
-import org.example.daos.DatabaseConnector;
 import org.example.models.LoginRequest;
 import org.example.models.User;
 import org.example.services.AuthService;
@@ -12,11 +10,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
-import javax.ws.rs.core.Response;
-
 import java.security.Key;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Base64;
 
@@ -32,14 +27,18 @@ public class AuthServiceTests {
 
     Connection conn;
 
+    String USERNAME = System.getenv().get("LOGIN_USER");
+    String PASSWORD = System.getenv().get("LOGIN_PASS");
+
     @Test
     void login_shouldReturnJwtToken_whenUserSuccessfullyLogsIn()
             throws SQLException, InvalidException {
+
         LoginRequest login = new LoginRequest("admin", "admin");
 
         when(dao.getUser(login))
                 .thenReturn(
-                        new User("admin", "admin", 1));
+                        new User(USERNAME, PASSWORD, 1));
 
         String result = service.login(login);
 
@@ -57,7 +56,7 @@ public class AuthServiceTests {
     @Test
     void login_shouldThrowInvalidException_whenInvalidCredentialsAreGiven()
             throws SQLException, InvalidException {
-        LoginRequest login = new LoginRequest("admin", "user");
+        LoginRequest login = new LoginRequest(USERNAME, "invalidpassword1234");
 
         when(dao.getUser(login)).thenReturn(null);
 

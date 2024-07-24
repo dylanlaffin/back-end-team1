@@ -17,13 +17,16 @@ import java.util.Base64;
 
 @ExtendWith(DropwizardExtensionsSupport.class)
 public class AuthIntegrationTests {
+    String USERNAME = System.getenv().get("LOGIN_USER");
+    String PASSWORD = System.getenv().get("LOGIN_PASS");
+
     public static final DropwizardAppExtension<TestConfiguration> APP =
             new DropwizardAppExtension<>(TestApplication.class);
 
     @Test
     void login_shouldLogin_whenCorrectCredentials(){
         Client client = APP.client();
-        LoginRequest login = new LoginRequest("admin", "admin");
+        LoginRequest login = new LoginRequest(USERNAME, PASSWORD);
 
         Response response = client.target
                 ("http://localhost:8080/api/auth/login").request()
@@ -45,7 +48,7 @@ public class AuthIntegrationTests {
     @Test
     void login_shouldLThrowInvalidException_whenIncorrectCredentials(){
         Client client = APP.client();
-        LoginRequest login = new LoginRequest("admin", "user");
+        LoginRequest login = new LoginRequest(USERNAME, "invalidpassword1234");
 
         Response response = client.target
                         ("http://localhost:8080/api/auth/login").request()

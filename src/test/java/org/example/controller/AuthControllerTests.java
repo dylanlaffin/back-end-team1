@@ -20,11 +20,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 class AuthControllerTests {
+    String USERNAME = System.getenv().get("LOGIN_USER");
+    String PASSWORD = System.getenv().get("LOGIN_PASS");
     AuthService authenticatorService = Mockito.mock(AuthService.class);
 
     private final AuthController authenticatorController = new AuthController(authenticatorService);
 
-    private final LoginRequest login = new LoginRequest("admin", "admin");
+    private final LoginRequest login = new LoginRequest(USERNAME, PASSWORD);
 
     @Test
     void login_shouldReturnJwtToken_whenValidCredentialsAreUsed()
