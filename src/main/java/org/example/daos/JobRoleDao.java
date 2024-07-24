@@ -1,8 +1,6 @@
 package org.example.daos;
 
 import org.example.exceptions.DatabaseConnectionException;
-import org.example.models.Band;
-import org.example.models.Capability;
 import org.example.models.OpenJobRoleResponse;
 import org.example.models.Locations;
 
@@ -28,9 +26,12 @@ public class JobRoleDao {
 
                 ResultSet resultSet;
                 resultSet = statement.executeQuery(
-                        "Select jobRoleName, jobRoleLocation,"
-                                + "jobRoleCapability, jobRoleBand,"
-                                + "jobRoleClosingDate from `jobRole` "
+                        "Select jobRoleName, jobRoleLocation, capabilityName, "
+                                + "jobRoleBand, jobRoleClosingDate "
+                                + "from `jobRole` "
+                                + "Left Join `capabilty` "
+                                + "on jobRole.capabiltyID "
+                                + "= capabilty.capabiltyID "
                                 + "where jobRoleOpen = true;");
                 while (resultSet.next()) {
                     OpenJobRoleResponse
@@ -38,10 +39,8 @@ public class JobRoleDao {
                             resultSet.getString("jobRoleName"),
                             Locations.valueOf(
                                     resultSet.getString("jobRoleLocation")),
-                            Capability.valueOf(
-                                    resultSet.getString("jobRoleCapability")),
-                            Band.valueOf(
-                                    resultSet.getString("jobRoleBand")),
+                                    resultSet.getString("capabilityName"),
+                                    resultSet.getString("jobRoleBand"),
                             resultSet.getDate("jobRoleClosingDate"));
 
                     jobRoleResponses.add(jobRoleResponse);

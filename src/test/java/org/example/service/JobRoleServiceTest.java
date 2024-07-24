@@ -2,8 +2,6 @@ package org.example.service;
 
 import org.example.daos.JobRoleDao;
 import org.example.exceptions.DatabaseConnectionException;
-import org.example.models.Band;
-import org.example.models.Capability;
 import org.example.models.OpenJobRoleResponse;
 import org.example.models.Locations;
 import org.example.services.JobRoleService;
@@ -30,8 +28,8 @@ public class JobRoleServiceTest {
     OpenJobRoleResponse jobRoleResponse = new OpenJobRoleResponse(
             "MaryJane1",
             Locations.BELFAST,
-            Capability.DELIVERY,
-            Band.BAND2,
+            "Delivery",
+            "Associate",
             new Date(2024 - 7 - 15));
 
     List<OpenJobRoleResponse> jobRoleResponseList = new ArrayList<>();

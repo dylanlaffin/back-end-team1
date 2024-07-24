@@ -14,11 +14,11 @@ public class OpenJobRoleResponse {
     /*
     instantiates a ENUM of Job Role CAPABILITY in the Job Role Response
      */
-    private Capability jobRoleCapability;
+    private String jobRoleCapability;
     /*
     instantiates a ENUM of Job Role BAND in the Job Role Response
      */
-    private Band jobRoleBand;
+    private String jobRoleBand;
     /*
     instantiates a Date of Job Role CLOSING Date in the Job Role Response
      */
@@ -28,8 +28,8 @@ public class OpenJobRoleResponse {
     public OpenJobRoleResponse(
             final String jRName,
             final Locations jRLocation,
-            final Capability jRCapability,
-            final Band jRBand,
+            final String jRCapability,
+            final String jRBand,
             final Date jRClosingDate) {
         this.jobRoleName = jRName;
         this.jobRoleLocation = jRLocation;
@@ -54,19 +54,19 @@ public class OpenJobRoleResponse {
         this.jobRoleLocation = jobRoleLocation;
     }
 
-    public Capability getJobRoleCapability() {
+    public String getJobRoleCapability() {
         return jobRoleCapability;
     }
 
-    public void setJobRoleCapability(final Capability jobRoleCapability) {
+    public void setJobRoleCapability(final String jobRoleCapability) {
         this.jobRoleCapability = jobRoleCapability;
     }
 
-    public Band getJobRoleBand() {
+    public String getJobRoleBand() {
         return jobRoleBand;
     }
 
-    public void setJobRoleBand(final Band jobRoleBand) {
+    public void setJobRoleBand(final String jobRoleBand) {
         this.jobRoleBand = jobRoleBand;
     }
 

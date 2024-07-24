@@ -2,8 +2,6 @@ package org.example.controller;
 
 import org.example.controllers.JobRoleController;
 import org.example.exceptions.DatabaseConnectionException;
-import org.example.models.Band;
-import org.example.models.Capability;
 import org.example.models.OpenJobRoleResponse;
 import org.example.models.Locations;
 import org.example.services.JobRoleService;
@@ -26,8 +24,8 @@ public class JobRoleControllerTest {
     private final OpenJobRoleResponse jobRoleResponse = new OpenJobRoleResponse(
             "MaryJane1",
             Locations.BELFAST,
-            Capability.DELIVERY,
-            Band.BAND2,
+            "HR",
+            "Associate",
             new Date(2024 - 7 - 15));
 
     /*
@@ -43,7 +41,7 @@ public class JobRoleControllerTest {
         when(jobRoleService.getOpenJobRoles()).thenReturn(jobRoleResponseList);
 
         Response response = jobRoleController.getJobRoles();
-
+        assertEquals(200, response.getStatus());
         assertEquals(jobRoleResponseList, response.getEntity());
     }
     /*
