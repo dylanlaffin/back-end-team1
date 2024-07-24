@@ -5,7 +5,6 @@ import io.jsonwebtoken.Jwts;
 import org.example.Exceptions.InvalidException;
 import org.example.controllers.AuthController;
 import org.example.models.LoginRequest;
-import org.example.models.User;
 import org.example.services.AuthService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
