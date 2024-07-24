@@ -4,7 +4,7 @@ import org.example.controllers.JobRoleController;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.Band;
 import org.example.models.Capability;
-import org.example.models.JobRoleResponse;
+import org.example.models.OpenJobRoleResponse;
 import org.example.models.Locations;
 import org.example.services.JobRoleService;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ public class JobRoleControllerTest {
     private final JobRoleController jobRoleController =
             new JobRoleController(jobRoleService);
 
-    private final JobRoleResponse jobRoleResponse = new JobRoleResponse(
+    private final OpenJobRoleResponse jobRoleResponse = new OpenJobRoleResponse(
             "MaryJane1",
             Locations.BELFAST,
             Capability.DELIVERY,
@@ -31,23 +31,23 @@ public class JobRoleControllerTest {
             new Date(2024 - 7 - 15));
 
     /*
-      When the service getAllJobRoles returns a JobRoleResponse List
+      When the service getOpenJobRoles returns a JobRoleResponse List
       Expect JobRoleResponse List to be returned in response to GetJobRoles
      */
     @Test
     void getJobRoles_shouldReturnJobRolesResponseList_whenGetAllJobRolesReturnsJobRoleResponseList()
             throws
             SQLException, DatabaseConnectionException {
-        List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
+        List<OpenJobRoleResponse> jobRoleResponseList = new ArrayList<>();
 
-        when(jobRoleService.getAllJobRoles()).thenReturn(jobRoleResponseList);
+        when(jobRoleService.getOpenJobRoles()).thenReturn(jobRoleResponseList);
 
         Response response = jobRoleController.getJobRoles();
 
         assertEquals(jobRoleResponseList, response.getEntity());
     }
     /*
-      When the service getAllJobRoles returns a SQLException
+      When the service getOpenJobRoles returns a SQLException
       Expect 500 to be returned in response to GetJobRoles
      */
     @Test
@@ -55,14 +55,14 @@ public class JobRoleControllerTest {
             throws
             SQLException, DatabaseConnectionException {
 
-        when(jobRoleService.getAllJobRoles()).thenThrow(SQLException.class);
+        when(jobRoleService.getOpenJobRoles()).thenThrow(SQLException.class);
 
         Response response = jobRoleController.getJobRoles();
 
         assertEquals(500, response.getStatus());
     }
     /*
-          When the service getAllJobRoles returns a DataBaseConnectionException
+          When the service getOpenJobRoles returns a DataBaseConnectionException
           Expect 500 to be returned in response to GetJobRoles
          */
     @Test
@@ -70,7 +70,7 @@ public class JobRoleControllerTest {
             throws
             SQLException, DatabaseConnectionException {
 
-        when(jobRoleService.getAllJobRoles()).thenThrow(
+        when(jobRoleService.getOpenJobRoles()).thenThrow(
                 DatabaseConnectionException.class);
 
         Response response = jobRoleController.getJobRoles();

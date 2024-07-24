@@ -2,7 +2,7 @@ package org.example.models;
 
 import java.sql.Date;
 
-public class JobRoleResponse {
+public class OpenJobRoleResponse {
     /*
     instantiates a string of Job Role Name in the Job Role Response
      */
@@ -24,7 +24,8 @@ public class JobRoleResponse {
      */
     private Date jobRoleClosingDate;
 
-    public JobRoleResponse(
+
+    public OpenJobRoleResponse(
             final String jRName,
             final Locations jRLocation,
             final Capability jRCapability,

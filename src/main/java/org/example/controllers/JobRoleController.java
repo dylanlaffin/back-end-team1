@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 
 @Api("Team1-API")
-@Path("/api/jobRoles")
+@Path("/api/openJobRoles")
 public class JobRoleController {
     /*
     instatiates the JOb role services
@@ -29,7 +29,7 @@ public class JobRoleController {
     public Response getJobRoles() {
         try {
             return Response.ok().entity(
-                    jobRoleService.getAllJobRoles()).build();
+                    jobRoleService.getOpenJobRoles()).build();
         } catch (SQLException | DatabaseConnectionException e) {
             return Response.serverError().build();
         }

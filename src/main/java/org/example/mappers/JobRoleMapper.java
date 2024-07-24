@@ -1,6 +1,6 @@
 package org.example.mappers;
 
-import org.example.models.JobRoleResponse;
+import org.example.models.OpenJobRoleResponse;
 import java.util.stream.Collectors;
 import java.util.List;
 
@@ -10,11 +10,11 @@ public class JobRoleMapper {
     maps the JobRoleResponse to a stream
     and then uses Collectors to convert the stream to a List
      */
-    public static List<JobRoleResponse> mapJobRoleResponseList(
-            final List<JobRoleResponse> jobRoleResponseList) {
+    public static List<OpenJobRoleResponse> mapJobRoleResponseList(
+            final List<OpenJobRoleResponse> jobRoleResponseList) {
         return  jobRoleResponseList
                 .stream()
-                .map(jobRoleResponse -> new JobRoleResponse(
+                .map(jobRoleResponse -> new OpenJobRoleResponse(
                         jobRoleResponse.getJobRoleName(),
                         jobRoleResponse.getJobRoleLocation(),
                         jobRoleResponse.getJobRoleCapability(),
