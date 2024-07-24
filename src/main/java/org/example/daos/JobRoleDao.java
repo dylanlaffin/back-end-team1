@@ -26,12 +26,15 @@ public class JobRoleDao {
 
                 ResultSet resultSet;
                 resultSet = statement.executeQuery(
-                        "Select jobRoleName, jobRoleLocation, capabilityName, "
-                                + "jobRoleBand, jobRoleClosingDate "
-                                + "from `jobRole` "
+                        "Select jobRoleName, jobRoleLocation, "
+                                + "capabilityName, bandName, "
+                                + "jobRoleClosingDate "
+                                + "from `jobRole`"
                                 + "Left Join `capabilty` "
                                 + "on jobRole.capabiltyID "
-                                + "= capabilty.capabiltyID "
+                                + "= capabilty.capabiltyID"
+                                + "Left Join `band` "
+                                + "on jobRole.bandID = band.bandID"
                                 + "where jobRoleOpen = true;");
                 while (resultSet.next()) {
                     OpenJobRoleResponse
@@ -39,8 +42,8 @@ public class JobRoleDao {
                             resultSet.getString("jobRoleName"),
                             Locations.valueOf(
                                     resultSet.getString("jobRoleLocation")),
-                                    resultSet.getString("capabilityName"),
-                                    resultSet.getString("jobRoleBand"),
+                            resultSet.getString("capabilityName"),
+                            resultSet.getString("bandName"),
                             resultSet.getDate("jobRoleClosingDate"));
 
                     jobRoleResponses.add(jobRoleResponse);
