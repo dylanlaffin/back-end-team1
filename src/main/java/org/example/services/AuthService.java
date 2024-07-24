@@ -32,9 +32,11 @@ public class AuthService {
     }
 
     private String generateJwtToken(final User user) {
+        final long expirationAddition = 28800000;
         return Jwts.builder()
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 28800000))
+                .expiration(new Date(
+                        System.currentTimeMillis() + expirationAddition))
                 .claim("Role", user.getRoleId())
                 .subject(user.getUsername())
                 .issuer("team1-api")
