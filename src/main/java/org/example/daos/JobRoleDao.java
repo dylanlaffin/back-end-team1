@@ -32,9 +32,9 @@ public class JobRoleDao {
                                 + "from `jobRole`"
                                 + "Left Join `capabilty` "
                                 + "on jobRole.capabiltyID "
-                                + "= capabilty.capabiltyID"
+                                + "= capabilty.capabiltyID "
                                 + "Left Join `band` "
-                                + "on jobRole.bandID = band.bandID"
+                                + "on jobRole.bandID = band.bandID "
                                 + "where jobRoleOpen = true;");
                 while (resultSet.next()) {
                     OpenJobRoleResponse

@@ -27,8 +27,8 @@ public enum Locations {
      */
     private final String location;
 
-    Locations(final String location) {
-    this.location = location;
+    Locations(final String local) {
+    this.location = local;
     }
     public String getLocation() {
         return this.location; }
