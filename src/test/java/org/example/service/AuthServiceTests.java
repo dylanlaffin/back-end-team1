@@ -3,6 +3,7 @@ package org.example.service;
 import io.jsonwebtoken.Jwts;
 import org.example.Exceptions.InvalidException;
 import org.example.daos.AuthDao;
+import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;
 import org.example.models.User;
 import org.example.services.AuthService;
@@ -32,7 +33,7 @@ public class AuthServiceTests {
 
     @Test
     void login_shouldReturnJwtToken_whenUserSuccessfullyLogsIn()
-            throws SQLException, InvalidException {
+            throws SQLException, InvalidException, DatabaseConnectionException {
 
         LoginRequest login = new LoginRequest("admin", "admin");
 
@@ -55,7 +56,7 @@ public class AuthServiceTests {
 
     @Test
     void login_shouldThrowInvalidException_whenInvalidCredentialsAreGiven()
-            throws SQLException, InvalidException {
+            throws SQLException, InvalidException, DatabaseConnectionException {
         LoginRequest login = new LoginRequest(USERNAME, "invalidpassword1234");
 
         when(dao.getUser(login)).thenReturn(null);
