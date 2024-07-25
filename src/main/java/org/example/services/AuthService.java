@@ -3,6 +3,7 @@ package org.example.services;
 import io.jsonwebtoken.Jwts;
 import org.example.Exceptions.InvalidException;
 import org.example.daos.AuthDao;
+import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;
 import org.example.models.User;
 
@@ -21,7 +22,7 @@ public class AuthService {
     }
 
     public String login(final LoginRequest login) throws SQLException,
-            InvalidException {
+            InvalidException, DatabaseConnectionException {
         User user = dao.getUser(login);
 
         if (user == null) {

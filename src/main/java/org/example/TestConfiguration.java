@@ -12,6 +12,9 @@ public class TestConfiguration extends Configuration {
     @NotNull
     private final SwaggerBundleConfiguration swagger =
             new SwaggerBundleConfiguration();
+    /*
+    configures swagger
+     */
     @JsonProperty("swagger")
     public SwaggerBundleConfiguration getSwagger() {
         swagger.setResourcePackage("org.example.controllers");

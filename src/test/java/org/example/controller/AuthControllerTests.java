@@ -4,6 +4,7 @@ package org.example.controller;
 import io.jsonwebtoken.Jwts;
 import org.example.Exceptions.InvalidException;
 import org.example.controllers.AuthController;
+import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;
 import org.example.services.AuthService;
 import org.junit.jupiter.api.Assertions;
@@ -30,7 +31,7 @@ class AuthControllerTests {
 
     @Test
     void login_shouldReturnJwtToken_whenValidCredentialsAreUsed()
-            throws SQLException, InvalidException {
+            throws SQLException, InvalidException, DatabaseConnectionException {
         String token = Jwts.builder()
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 28800000))
@@ -60,7 +61,7 @@ class AuthControllerTests {
 
     @Test
     void login_shouldReturnErrorCode500_whenSqlExceptionThrown()
-            throws SQLException, InvalidException {
+            throws SQLException, InvalidException, DatabaseConnectionException {
         when(authenticatorService.login(login)).thenThrow(SQLException.class);
 
         assertEquals(500, authenticatorController.login(login).getStatus());
@@ -68,7 +69,7 @@ class AuthControllerTests {
 
     @Test
     void login_shouldReturnErrorCode400_whenInvalidExceptionThrown()
-            throws SQLException, InvalidException {
+            throws SQLException, InvalidException, DatabaseConnectionException {
         when(authenticatorService.login(login)).thenThrow(InvalidException.class);
 
         assertEquals(400, authenticatorController.login(login).getStatus());

@@ -2,6 +2,7 @@ package org.example.controllers;
 
 import io.swagger.annotations.Api;
 import org.example.Exceptions.InvalidException;
+import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;
 import org.example.services.AuthService;
 
@@ -24,7 +25,8 @@ public class AuthController {
     @POST
     @Path("/login")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response login(final LoginRequest login) {
+    public Response login(final LoginRequest login)
+            throws DatabaseConnectionException {
         try {
             return Response.ok().entity(service.login(login)).build();
         } catch (SQLException e) {
