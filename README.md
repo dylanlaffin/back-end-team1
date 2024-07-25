@@ -1,4 +1,4 @@
-# Java DropWizard Flyway Starter
+# Belfast Team 1
 
 Database Migration - Local
 ---
@@ -49,13 +49,36 @@ How to start the test application
     2. DB_PASSWORD
     3. DB_HOST
     4. DB_NAME
-1. Run `mvn clean install` to build your application
-1. You can start application via:
+2. Run `mvn clean install` to build your application
+3. You can start application via:
     1. Terminal: `java -jar target/java-swagger-flyway-starter-org.kainos.ea.jar server config.yml`
     2. IDE: Edit run configuration -> Add `server` to program arguments -> Run
-1. To check that your application is running enter url `http://localhost:8080/api/test`
+4. To check that your application is running enter url `http://localhost:8080/api/auth/login`
+
+Project Description
+---
+An online job application that serves both,
+Kainos recruitment admin to retrieve and update job roles,
+and their relevant information and applicants to apply for roles.
+
+Technology Stack
+---
+Back-End:  Docker, AWS, MySQL Testing: unit tests using Mockito, Jupiter
 
 Health Check
 ---
 
 To see your applications health enter url `http://localhost:8081/healthcheck`
+
+Project Credits
+---
+Developers:
+Gerard McLean,
+Hannah Morgan,
+Jakub Rutkowski,
+Rachael McKeown,
+Brigid Monaghan.
+
+Testers:
+Lex Seaton,
+Dylan Laffin.
