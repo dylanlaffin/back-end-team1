@@ -1,6 +1,7 @@
 package org.example.daos;
 
 import org.example.exceptions.DatabaseConnectionException;
+import org.example.models.JobRoleResponse;
 import org.example.models.OpenJobRoleResponse;
 import org.example.models.Locations;
 
@@ -59,9 +60,9 @@ public class JobRoleDao {
      * DAO method to JobRoles by ID from database.
      *
      */
-    public List<OpenJobRoleResponse> getJobRolesByID()
+    public List<JobRoleResponse> getJobRolesByID()
             throws SQLException, DatabaseConnectionException {
-        List<OpenJobRoleResponse> jobRoleResponses = new ArrayList<>();
+        List<JobRoleResponse> jobRoleResponses = new ArrayList<>();
         try (Connection connection = DatabaseConnector.getConnection()) {
             if (connection != null) {
                 Statement statement = connection.createStatement();
@@ -70,7 +71,10 @@ public class JobRoleDao {
                 resultSet = statement.executeQuery(
                         "Select jobRoleName, jobRoleLocation, "
                                 + "capabilityName, bandName, "
-                                + "jobRoleClosingDate "
+                                + "jobRoleClosingDate, "
+                                + "jobRoleDescription, "
+                                + "jobRoleResponsibilities, "
+                                + "jobRoleSpecUrl, "
                                 + "from `jobRole`"
                                 + "Left Join `capabilty` "
                                 + "on jobRole.capabiltyID "
@@ -79,14 +83,17 @@ public class JobRoleDao {
                                 + "on jobRole.bandID = band.bandID "
                                 + "where jobRoleOpen = true;");
                 while (resultSet.next()) {
-                    OpenJobRoleResponse
-                            jobRoleResponse = new OpenJobRoleResponse(
+                    JobRoleResponse
+                            jobRoleResponse = new JobRoleResponse(
                             resultSet.getString("jobRoleName"),
                             Locations.valueOf(
                                     resultSet.getString("jobRoleLocation")),
                             resultSet.getString("capabilityName"),
                             resultSet.getString("bandName"),
-                            resultSet.getDate("jobRoleClosingDate"));
+                            resultSet.getDate("jobRoleClosingDate"),
+                            resultSet.getString("jobRoleClosingDate"),
+                            resultSet.getString("jobRoleResponsibilities"),
+                            resultSet.getString("jobRoleSpecUrl"));
 
                     jobRoleResponses.add(jobRoleResponse);
                 }
