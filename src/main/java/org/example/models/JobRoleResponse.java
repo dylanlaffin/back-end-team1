@@ -2,8 +2,7 @@ package org.example.models;
 
 import java.sql.Date;
 
-public class OpenJobRoleResponse {
-    private int jobRoleID;
+public class JobRoleResponse {
     /*
     instantiates a string of Job Role Name in the Job Role Response
      */
@@ -21,32 +20,40 @@ public class OpenJobRoleResponse {
      */
     private String jobRoleBand;
     /*
-    instantiates a Date of Job Role CLOSING Date in the Job Role Response
+    instantiates a Job Role CLOSING Date in the Job Role Response
      */
     private Date jobRoleClosingDate;
+    /*
+    instantiates a job role spec Url in the Job Role Response
+     */
+    private String jobRoleSpecUrl;
+    /*
+    instantiates a job roles responsibilities in the Job Role Response
+     */
+    private String jobRoleResponsibilities;
+    /*
+    instantiates a Date of Job Role Description Date in the Job Role Response
+     */
+    private String jobRoleDescription;
 
 
-    public OpenJobRoleResponse(
-            final int jRID,
+    public JobRoleResponse(
             final String jRName,
             final Locations jRLocation,
             final String jRCapability,
             final String jRBand,
-            final Date jRClosingDate) {
-        this.jobRoleID = jRID;
+            final Date jRClosingDate,
+            final String jRSpecUrl,
+            final String jRResponsibilities,
+            final String jRDescription) {
         this.jobRoleName = jRName;
         this.jobRoleLocation = jRLocation;
         this.jobRoleCapability = jRCapability;
         this.jobRoleBand = jRBand;
         this.jobRoleClosingDate = jRClosingDate;
-    }
-
-    public int getJobRoleID() {
-        return jobRoleID;
-    }
-
-    public void setJobRoleID(final int jobRoleID) {
-        this.jobRoleID = jobRoleID;
+        this.jobRoleSpecUrl = jRSpecUrl;
+        this.jobRoleResponsibilities = jRResponsibilities;
+        this.jobRoleDescription = jRDescription;
     }
 
     public String getJobRoleName() {
@@ -87,6 +94,30 @@ public class OpenJobRoleResponse {
 
     public void setJobRoleClosingDate(final Date jobRoleClosingDate) {
         this.jobRoleClosingDate = jobRoleClosingDate;
+    }
+
+    public String getJobRoleSpecUrl() {
+        return jobRoleSpecUrl;
+    }
+
+    public void setJobRoleSpecUrl(final String jobRoleSpecUrl) {
+        this.jobRoleSpecUrl = jobRoleSpecUrl;
+    }
+
+    public String getJobRoleResponsibilities() {
+        return jobRoleResponsibilities;
+    }
+
+    public void setJobRoleResponsibilities(final String jobRoleResponsibilities) {
+        this.jobRoleResponsibilities = jobRoleResponsibilities;
+    }
+
+    public String getJobRoleDescription() {
+        return jobRoleDescription;
+    }
+
+    public void setJobRoleDescription(final String jobRoleDescription) {
+        this.jobRoleDescription = jobRoleDescription;
     }
 }
 
