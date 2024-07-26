@@ -6,7 +6,7 @@ import org.example.models.JwtToken;
 import javax.annotation.Nullable;
 import javax.ws.rs.container.ContainerRequestContext;
 
-public class RolerAuthoriser implements Authorizer<JwtToken> {
+public class RoleAuthoriser implements Authorizer<JwtToken> {
     @Override
     public boolean authorize(JwtToken jwtToken, String s) {
         return jwtToken.getUserRole().getRoleName().equals(s);
