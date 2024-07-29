@@ -1,9 +1,8 @@
 package org.example.daos;
 
-import com.sun.jdi.connect.spi.TransportService;
 import org.example.exceptions.DatabaseConnectionException;
+import org.example.models.JobRoleDetailResponse;
 import org.example.models.JobRoleResponse;
-import org.example.models.OpenJobRoleResponse;
 import org.example.models.Locations;
 
 import java.sql.Connection;
@@ -20,9 +19,9 @@ public class JobRoleDao {
      * DAO method to getJobRoles OPEN jobRoles from database.
      *
      */
-    public List<OpenJobRoleResponse> getOpenJobRoles()
+    public List<JobRoleResponse> getOpenJobRoles()
             throws SQLException, DatabaseConnectionException {
-        List<OpenJobRoleResponse> jobRoleResponses = new ArrayList<>();
+        List<JobRoleResponse> jobRoleResponses = new ArrayList<>();
         try (Connection connection = DatabaseConnector.getConnection()) {
             if (connection != null) {
                 Statement statement = connection.createStatement();
@@ -40,8 +39,8 @@ public class JobRoleDao {
                                 + "on jobRole.bandID = band.bandID "
                                 + "where jobRoleOpen = true;");
                 while (resultSet.next()) {
-                    OpenJobRoleResponse
-                            jobRoleResponse = new OpenJobRoleResponse(
+                    JobRoleResponse
+                            jobRoleResponse = new JobRoleResponse(
                                     resultSet.getInt("jobRoleID"),
                             resultSet.getString("jobRoleName"),
                             Locations.valueOf(
@@ -62,11 +61,12 @@ public class JobRoleDao {
      * DAO method to JobRoles by ID from database.
      *
      */
-    public JobRoleResponse getJobRoleByID(final int id)
+    public JobRoleDetailResponse getJobRoleByID(final int id)
             throws SQLException, DatabaseConnectionException {
         try (Connection connection = DatabaseConnector.getConnection()) {
 
-            String query = "Select jobRoleName, jobRoleLocation, "
+            String query = "Select jobRoleID, "
+                    + "jobRoleName, jobRoleLocation, "
                     + "capabilityName, bandName, "
                     + "jobRoleClosingDate, "
                     + "jobRoleSpecUrl, "
@@ -88,7 +88,9 @@ public class JobRoleDao {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                return new JobRoleResponse(resultSet.getString("jobRoleName"),
+                return new JobRoleDetailResponse(
+                        resultSet.getInt("jobRoleID"),
+                        resultSet.getString("jobRoleName"),
                         Locations.valueOf(
                                 resultSet.getString("jobRoleLocation")),
                         resultSet.getString("capabilityName"),

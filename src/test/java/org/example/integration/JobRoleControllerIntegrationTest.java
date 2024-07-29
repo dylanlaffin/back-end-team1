@@ -5,7 +5,6 @@ import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import org.example.TestApplication;
 import org.example.TestConfiguration;
 import org.example.models.JobRoleResponse;
-import org.example.models.OpenJobRoleResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +24,7 @@ public class JobRoleControllerIntegrationTest {
     void getJobRoles_shouldReturnListOfJobRoles() {
         Client client = APP.client();
 
-        List<OpenJobRoleResponse> response = client
+        List<JobRoleResponse> response = client
                 .target("http://localhost:8080/api/openJobRoles")
                 .request()
                 .get(List.class);

@@ -3,8 +3,8 @@ package org.example.controller;
 import org.example.Exceptions.DoesNotExistException;
 import org.example.controllers.JobRoleController;
 import org.example.exceptions.DatabaseConnectionException;
+import org.example.models.JobRoleDetailResponse;
 import org.example.models.JobRoleResponse;
-import org.example.models.OpenJobRoleResponse;
 import org.example.models.Locations;
 import org.example.services.JobRoleService;
 import org.junit.jupiter.api.Test;
@@ -23,7 +23,7 @@ public class JobRoleControllerTest {
     private final JobRoleController jobRoleController =
             new JobRoleController(jobRoleService);
 
-    private final OpenJobRoleResponse openJobRoleResponse = new OpenJobRoleResponse(
+    private final JobRoleResponse jobRoleResponse = new JobRoleResponse(
             1,
             "MaryJane1",
             Locations.BELFAST,
@@ -31,7 +31,8 @@ public class JobRoleControllerTest {
             "Associate",
             new Date(2024 - 7 - 15));
 
-    JobRoleResponse jobRoleResponse = new JobRoleResponse(
+    JobRoleDetailResponse jobRoleDetailResponse = new JobRoleDetailResponse(
+            1,
             "Technical Architect",
             Locations.BELFAST,
             "Delivery",
@@ -49,7 +50,7 @@ public class JobRoleControllerTest {
     void getJobRoles_shouldReturnJobRolesResponseList_whenGetAllJobRolesReturnsJobRoleResponseList()
             throws
             SQLException, DatabaseConnectionException {
-        List<OpenJobRoleResponse> jobRoleResponseList = new ArrayList<>();
+        List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
 
         when(jobRoleService.getOpenJobRoles()).thenReturn(jobRoleResponseList);
 
@@ -101,10 +102,10 @@ public class JobRoleControllerTest {
             DoesNotExistException {
         int id =1;
         when(jobRoleService.getJobRoleById(id)).thenReturn(
-                jobRoleResponse);
+                jobRoleDetailResponse);
         Response response = jobRoleController.getJobRoleById(id);
         assertEquals(200, response.getStatus());
-        assertEquals(jobRoleResponse, response.getEntity());
+        assertEquals(jobRoleDetailResponse, response.getEntity());
     }
 
     /*
