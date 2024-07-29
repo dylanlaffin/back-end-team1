@@ -69,9 +69,9 @@ public class JobRoleDao {
             String query = "Select jobRoleName, jobRoleLocation, "
                     + "capabilityName, bandName, "
                     + "jobRoleClosingDate, "
-                    + "jobRoleDescription, "
+                    + "jobRoleSpecUrl, "
                     + "jobRoleResponsibilities, "
-                    + "jobRoleSpecUrl "
+                    + "jobRoleDescription "
                     + "from `jobRole`"
                     + "Left Join `capabilty` "
                     + "on jobRole.capabiltyID "
@@ -94,9 +94,9 @@ public class JobRoleDao {
                         resultSet.getString("capabilityName"),
                         resultSet.getString("bandName"),
                         resultSet.getDate("jobRoleClosingDate"),
-                        resultSet.getString("jobRoleClosingDate"),
+                        resultSet.getString("jobRoleSpecUrl"),
                         resultSet.getString("jobRoleResponsibilities"),
-                        resultSet.getString("jobRoleSpecUrl"));
+                        resultSet.getString("jobRoleDescription"));
 
             }
         }
