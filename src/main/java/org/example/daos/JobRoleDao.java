@@ -71,7 +71,7 @@ public class JobRoleDao {
                     + "jobRoleClosingDate, "
                     + "jobRoleDescription, "
                     + "jobRoleResponsibilities, "
-                    + "jobRoleSpecUrl, "
+                    + "jobRoleSpecUrl "
                     + "from `jobRole`"
                     + "Left Join `capabilty` "
                     + "on jobRole.capabiltyID "
@@ -82,6 +82,8 @@ public class JobRoleDao {
 
             PreparedStatement preparedStatement =
                     connection.prepareStatement(query);
+
+            preparedStatement.setInt(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
