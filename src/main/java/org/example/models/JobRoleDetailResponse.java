@@ -2,7 +2,7 @@ package org.example.models;
 
 import java.sql.Date;
 
-public class JobRoleDetailResponse extends JobRoleResponse{
+public class JobRoleDetailResponse extends JobRoleResponse {
 
     /*
     instantiates a job role spec Url in the Job Role Response
@@ -46,7 +46,8 @@ public class JobRoleDetailResponse extends JobRoleResponse{
         return jobRoleResponsibilities;
     }
 
-    public void setJobRoleResponsibilities(final String jobRoleResponsibilities) {
+    public void setJobRoleResponsibilities(
+            final String jobRoleResponsibilities) {
         this.jobRoleResponsibilities = jobRoleResponsibilities;
     }
 

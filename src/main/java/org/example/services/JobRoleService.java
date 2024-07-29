@@ -25,7 +25,8 @@ public class JobRoleService {
     public JobRoleDetailResponse getJobRoleById(final int id)
             throws SQLException, DatabaseConnectionException,
             DoesNotExistException {
-        JobRoleDetailResponse jobRoleDetailResponse = jobRoleDao.getJobRoleByID(id);
+        JobRoleDetailResponse jobRoleDetailResponse
+                = jobRoleDao.getJobRoleByID(id);
         if (jobRoleDetailResponse == null) {
             throw new DoesNotExistException(Entity.JOBROLERESPONSE);
         }
