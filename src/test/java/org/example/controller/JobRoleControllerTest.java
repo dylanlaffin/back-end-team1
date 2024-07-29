@@ -91,16 +91,66 @@ public class JobRoleControllerTest {
         assertEquals(500, response.getStatus());
     }
 
+    /*
+        When the Service gets jobRoleById returns a jobRoleResponse
+        expect a jobRoleResponse returned
+     */
     @Test
     void getJobRoleById_shouldReturnJobRoleResponse_whenGetSuccessful()
+            throws DatabaseConnectionException, SQLException,
+            DoesNotExistException {
+        int id =1;
+        when(jobRoleService.getJobRoleById(id)).thenReturn(
+                jobRoleResponse);
+        Response response = jobRoleController.getJobRoleById(id);
+        assertEquals(200, response.getStatus());
+        assertEquals(jobRoleResponse, response.getEntity());
+    }
+
+    /*
+        when the service get jobRoleById returns a SQL exception
+        expect 500 to be returned in response
+     */
+    @Test
+    void getJobRoleById_shouldReturn500SQLException_whenGetJobRoleByIdReturnSQLexception()
+            throws DatabaseConnectionException, SQLException,
+            DoesNotExistException {
+        int id =1;
+        when(jobRoleService.getJobRoleById(id)).thenThrow(
+                SQLException.class);
+        Response response = jobRoleController.getJobRoleById(id);
+        assertEquals(500, response.getStatus());
+    }
+
+    /*
+        when the service get jobRoleById returns a DatabaseConnection exception
+        expect 500 to be returned in response
+     */
+    @Test
+    void getJobRoleById_shouldReturn500DatabaseConnection_whenGetJobRoleByIdReturnDatabaseException()
             throws DatabaseConnectionException, SQLException,
             DoesNotExistException {
         int id =1;
         when(jobRoleService.getJobRoleById(id)).thenThrow(
                 DatabaseConnectionException.class);
         Response response = jobRoleController.getJobRoleById(id);
-        assertEquals(200, response.getStatus());
-        assertEquals(openJobRoleResponse, response.getEntity());
+        assertEquals(500, response.getStatus());
 
     }
+
+    /*
+        when the service get jobRoleById returns a DoesNotExist exception
+        expect 500 to be returned in response
+     */
+    @Test
+    void getJobRoleById_shouldReturn500DoesNotExist_whenGetJobRoleByIdReturnNull()
+            throws DatabaseConnectionException, SQLException,
+            DoesNotExistException {
+        int id =1;
+        when(jobRoleService.getJobRoleById(id)).thenThrow(DoesNotExistException.class);
+        Response response = jobRoleController.getJobRoleById(id);
+        assertEquals(404, response.getStatus());
+
+    }
+
 }
