@@ -1,7 +1,9 @@
 package org.example.service;
 
+import org.example.Exceptions.DoesNotExistException;
 import org.example.daos.JobRoleDao;
 import org.example.exceptions.DatabaseConnectionException;
+import org.example.models.JobRoleResponse;
 import org.example.models.OpenJobRoleResponse;
 import org.example.models.Locations;
 import org.example.services.JobRoleService;
@@ -25,14 +27,26 @@ public class JobRoleServiceTest {
 
     JobRoleService jobRoleService = new JobRoleService(jobRoleDao);
 
-    OpenJobRoleResponse jobRoleResponse = new OpenJobRoleResponse(
+    OpenJobRoleResponse openJobRoleResponse = new OpenJobRoleResponse(
+            1,
             "MaryJane1",
             Locations.BELFAST,
             "Delivery",
             "Associate",
             new Date(2024 - 7 - 15));
 
-    List<OpenJobRoleResponse> jobRoleResponseList = new ArrayList<>();
+    JobRoleResponse jobRoleResponse = new JobRoleResponse(
+            "Technical Architect",
+            Locations.BELFAST,
+            "Delivery",
+            "Senior Associate",
+            new Date(2024 - 7 - 15),
+            "testurl.com",
+                    "Test Responsibilities",
+                    "Test Job Role Descriptions");
+
+
+    List<OpenJobRoleResponse> openJobRoleResponseList = new ArrayList<>();
     /*
       When the DAO getOpenJobRoles returns a JobRoleResponse List
       Expect JobRoleResponse List to be returned in response to GetAllJobRoles
@@ -41,9 +55,10 @@ public class JobRoleServiceTest {
     void getOpenJobRoles_shouldReturnAListOfJobRoles_whenDaoReturnsAListOfJobRoles()
             throws SQLException, DatabaseConnectionException {
 
-        Mockito.when(jobRoleDao.getOpenJobRoles()).thenReturn(jobRoleResponseList);
+        Mockito.when(jobRoleDao.getOpenJobRoles()).thenReturn(
+                openJobRoleResponseList);
 
-        assertEquals(jobRoleResponseList, jobRoleService.getOpenJobRoles());
+        assertEquals(openJobRoleResponseList, jobRoleService.getOpenJobRoles());
     }
     /*
          When the DAO getOpenJobRoles returns a SQL Exception
@@ -73,6 +88,42 @@ public class JobRoleServiceTest {
 
         assertThrows(DatabaseConnectionException.class,
                 () -> jobRoleService.getOpenJobRoles());
+    }
+
+    @Test
+    void getJobRolesById_shouldReturnJobRoleResponse_whenDaoReturnsJobRoleResponse()
+        throws SQLException, DatabaseConnectionException, DoesNotExistException {
+            Mockito.when(jobRoleDao.getJobRoleByID(1)).thenReturn(jobRoleResponse);
+
+            assertEquals(jobRoleResponse, jobRoleService.getJobRoleById(1));
+
+        }
+
+    @Test
+    void getJobRolesById_shouldThrowSQLException_whenDaoThrowsSQLException()
+            throws SQLException, DatabaseConnectionException {
+        Mockito.when(jobRoleDao.getJobRoleByID(1)).thenThrow(SQLException.class);
+
+        assertThrows(SQLException.class, ()-> jobRoleService.getJobRoleById(1));
+
+    }
+
+    @Test
+    void getJobRolesById_shouldThrowDatabaseException_whenDaoThrowsDatabaseException()
+            throws SQLException, DatabaseConnectionException {
+        Mockito.when(jobRoleDao.getJobRoleByID(1)).thenThrow(DatabaseConnectionException.class);
+
+        assertThrows(DatabaseConnectionException.class, ()-> jobRoleService.getJobRoleById(1));
+
+    }
+
+    @Test
+    void getJobRolesById_shouldThrowDoesNotExistException_whenDaoReturnsNull()
+            throws SQLException, DatabaseConnectionException, DoesNotExistException {
+        Mockito.when(jobRoleDao.getJobRoleByID(1)).thenReturn(null);
+
+        assertThrows(DoesNotExistException.class, ()-> jobRoleService.getJobRoleById(1));
+
     }
 
 }
