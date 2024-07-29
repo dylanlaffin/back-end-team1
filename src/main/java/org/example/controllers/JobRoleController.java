@@ -47,7 +47,8 @@ public class JobRoleController {
         } catch (SQLException | DatabaseConnectionException e) {
             return Response.serverError().build();
         } catch (DoesNotExistException e) {
-            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity(e.getMessage()).build();
         }
     }
 }
