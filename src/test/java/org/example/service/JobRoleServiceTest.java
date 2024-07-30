@@ -42,9 +42,7 @@ public class JobRoleServiceTest {
             "Delivery",
             "Senior Associate",
             new Date(2024 - 7 - 15),
-            "testurl.com",
-                    "Test Responsibilities",
-                    "Test Job Role Descriptions");
+            "testurl.com Test Responsibilities Test Job Role Descriptions");
 
 
     List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();

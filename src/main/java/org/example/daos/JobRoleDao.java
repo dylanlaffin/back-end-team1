@@ -4,7 +4,6 @@ import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;
 import org.example.models.JobRoleResponse;
 import org.example.models.Locations;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -69,9 +68,7 @@ public class JobRoleDao {
                     + "jobRoleName, jobRoleLocation, "
                     + "capabilityName, bandName, "
                     + "jobRoleClosingDate, "
-                    + "jobRoleSpecUrl, "
-                    + "jobRoleResponsibilities, "
-                    + "jobRoleDescription "
+                    + "jobRoleSpecification "
                     + "from `jobRole`"
                     + "Left Join `capabilty` "
                     + "on jobRole.capabiltyID "
@@ -96,9 +93,7 @@ public class JobRoleDao {
                         resultSet.getString("capabilityName"),
                         resultSet.getString("bandName"),
                         resultSet.getDate("jobRoleClosingDate"),
-                        resultSet.getString("jobRoleSpecUrl"),
-                        resultSet.getString("jobRoleResponsibilities"),
-                        resultSet.getString("jobRoleDescription"));
+                        resultSet.getString("jobRoleSpecification"));
 
             }
         }

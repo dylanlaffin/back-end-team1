@@ -4,59 +4,34 @@ import java.sql.Date;
 
 public class JobRoleDetailResponse extends JobRoleResponse {
 
+
     /*
     instantiates a job role spec Url in the Job Role Response
      */
-    private String jobRoleSpecUrl;
-    /*
-    instantiates a job roles responsibilities in the Job Role Response
-     */
-    private String jobRoleResponsibilities;
-    /*
-    instantiates a Date of Job Role Description Date in the Job Role Response
-     */
-    private String jobRoleDescription;
+    private String jobRoleSpecification;
 
 
     public JobRoleDetailResponse(
             final int jRID,
-            final String jRName,
-            final Locations jRLocation,
-            final String jRCapability,
+            final String jobRoleName,
+            final Locations jobRoleLocation,
+            final String jobRoleCapability,
             final String jRBand,
             final Date jRClosingDate,
-            final String jRSpecUrl,
-            final String jRResponsibilities,
-            final String jRDescription) {
-        super(jRID, jRName, jRLocation, jRCapability, jRBand, jRClosingDate);
-        this.jobRoleSpecUrl = jRSpecUrl;
-        this.jobRoleResponsibilities = jRResponsibilities;
-        this.jobRoleDescription = jRDescription;
+            final String jRSpecification) {
+        super(jRID, jobRoleName, jobRoleLocation, jobRoleCapability,
+                jRBand, jRClosingDate);
+        this.jobRoleSpecification = jRSpecification;
     }
 
-    public String getJobRoleSpecUrl() {
-        return jobRoleSpecUrl;
+    public String getJobRoleSpecification() {
+        return jobRoleSpecification;
     }
 
-    public void setJobRoleSpecUrl(final String jobRoleSpecUrl) {
-        this.jobRoleSpecUrl = jobRoleSpecUrl;
+    public void setJobRoleSpecification(final String jobRoleSpecification) {
+        this.jobRoleSpecification = jobRoleSpecification;
     }
 
-    public String getJobRoleResponsibilities() {
-        return jobRoleResponsibilities;
-    }
 
-    public void setJobRoleResponsibilities(
-            final String jobRoleResponsibilities) {
-        this.jobRoleResponsibilities = jobRoleResponsibilities;
-    }
-
-    public String getJobRoleDescription() {
-        return jobRoleDescription;
-    }
-
-    public void setJobRoleDescription(final String jobRoleDescription) {
-        this.jobRoleDescription = jobRoleDescription;
-    }
 }
 

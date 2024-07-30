@@ -28,7 +28,7 @@ public class JobRoleService {
         JobRoleDetailResponse jobRoleDetailResponse
                 = jobRoleDao.getJobRoleByID(id);
         if (jobRoleDetailResponse == null) {
-            throw new DoesNotExistException(Entity.JOBROLERESPONSE);
+            throw new DoesNotExistException(Entity.JOBROLEDETAILRESPONSE);
         }
         return jobRoleDetailResponse;
     }
