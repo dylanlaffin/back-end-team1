@@ -23,6 +23,10 @@ public class OpenJobRoleResponse {
     instantiates a Date of Job Role CLOSING Date in the Job Role Response
      */
     private Date jobRoleClosingDate;
+    /*
+    instantiates an Integer of number of open positions in the Job Role Response
+    */
+    private int numOpenPos;
 
 
     public OpenJobRoleResponse(
@@ -30,12 +34,14 @@ public class OpenJobRoleResponse {
             final Locations jRLocation,
             final String jRCapability,
             final String jRBand,
-            final Date jRClosingDate) {
+            final Date jRClosingDate,
+            final int numOpenPos) {
         this.jobRoleName = jRName;
         this.jobRoleLocation = jRLocation;
         this.jobRoleCapability = jRCapability;
         this.jobRoleBand = jRBand;
         this.jobRoleClosingDate = jRClosingDate;
+        this.numOpenPos = numOpenPos;
     }
 
     public String getJobRoleName() {
@@ -76,6 +82,14 @@ public class OpenJobRoleResponse {
 
     public void setJobRoleClosingDate(final Date jobRoleClosingDate) {
         this.jobRoleClosingDate = jobRoleClosingDate;
+    }
+
+    public int getNumOpenPos() {
+        return numOpenPos;
+    }
+
+    public void setNumOpenPos(final int numOpenPos) {
+        this.numOpenPos = numOpenPos;
     }
 }
 

@@ -5,8 +5,11 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
+import org.example.controllers.ApplicationsController;
 import org.example.controllers.JobRoleController;
+import org.example.daos.ApplicationsDao;
 import org.example.daos.JobRoleDao;
+import org.example.services.ApplicationsService;
 import org.example.services.JobRoleService;
 import io.jsonwebtoken.Jwts;
 import org.example.controllers.AuthController;
@@ -44,6 +47,8 @@ public class TestApplication extends Application<TestConfiguration> {
         Key jwtKey = Jwts.SIG.HS256.key().build();
         environment.jersey().register(new AuthController(new AuthService(
                 new AuthDao(), jwtKey)));
+        environment.jersey().register(new ApplicationsController(
+                new ApplicationsService(new ApplicationsDao())));
     }
 
 }

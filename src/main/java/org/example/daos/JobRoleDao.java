@@ -28,7 +28,7 @@ public class JobRoleDao {
                 resultSet = statement.executeQuery(
                         "Select jobRoleName, jobRoleLocation, "
                                 + "capabilityName, bandName, "
-                                + "jobRoleClosingDate "
+                                + "jobRoleClosingDate, numOpenPos "
                                 + "from `jobRole`"
                                 + "Left Join `capabilty` "
                                 + "on jobRole.capabiltyID "
@@ -44,7 +44,8 @@ public class JobRoleDao {
                                     resultSet.getString("jobRoleLocation")),
                             resultSet.getString("capabilityName"),
                             resultSet.getString("bandName"),
-                            resultSet.getDate("jobRoleClosingDate"));
+                            resultSet.getDate("jobRoleClosingDate"),
+                            resultSet.getInt("numOpenPos"));
 
                     jobRoleResponses.add(jobRoleResponse);
                 }

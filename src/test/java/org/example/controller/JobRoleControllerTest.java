@@ -26,7 +26,8 @@ public class JobRoleControllerTest {
             Locations.BELFAST,
             "HR",
             "Associate",
-            new Date(2024 - 7 - 15));
+            new Date(2024 - 7 - 15),
+            1);
 
     /*
       When the service getOpenJobRoles returns a JobRoleResponse List

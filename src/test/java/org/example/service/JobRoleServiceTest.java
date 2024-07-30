@@ -30,7 +30,8 @@ public class JobRoleServiceTest {
             Locations.BELFAST,
             "Delivery",
             "Associate",
-            new Date(2024 - 7 - 15));
+            new Date(2024 - 7 - 15),
+            1);
 
     List<OpenJobRoleResponse> jobRoleResponseList = new ArrayList<>();
     /*
