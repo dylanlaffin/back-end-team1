@@ -5,6 +5,7 @@ import org.example.daos.JobRoleDao;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;
 import org.example.models.JobRoleResponse;
+import org.example.models.JobRoleSpecification;
 import org.example.models.Locations;
 import org.example.services.JobRoleService;
 import org.junit.jupiter.api.Test;
@@ -42,9 +43,10 @@ public class JobRoleServiceTest {
             "Delivery",
             "Senior Associate",
             new Date(2024 - 7 - 15),
-            "testurl.com",
+            new JobRoleSpecification(
+                    "testurl.com",
                     "Test Responsibilities",
-                    "Test Job Role Descriptions");
+                    "Test Job Role Descriptions"));
 
 
     List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();

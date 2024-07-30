@@ -26,6 +26,7 @@ public class JobRoleResponse {
     private Date jobRoleClosingDate;
 
 
+
     public JobRoleResponse(
             final int jRID,
             final String jRName,
@@ -39,6 +40,7 @@ public class JobRoleResponse {
         this.jobRoleCapability = jRCapability;
         this.jobRoleBand = jRBand;
         this.jobRoleClosingDate = jRClosingDate;
+
     }
 
     public int getJobRoleID() {
@@ -88,5 +90,7 @@ public class JobRoleResponse {
     public void setJobRoleClosingDate(final Date jobRoleClosingDate) {
         this.jobRoleClosingDate = jobRoleClosingDate;
     }
+
+
 }
 

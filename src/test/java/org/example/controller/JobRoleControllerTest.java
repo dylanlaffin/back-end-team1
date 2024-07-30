@@ -5,6 +5,7 @@ import org.example.controllers.JobRoleController;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;
 import org.example.models.JobRoleResponse;
+import org.example.models.JobRoleSpecification;
 import org.example.models.Locations;
 import org.example.services.JobRoleService;
 import org.junit.jupiter.api.Test;
@@ -38,9 +39,9 @@ public class JobRoleControllerTest {
             "Delivery",
             "Senior Associate",
             new Date(2024 - 7 - 15),
-            "testurl.com",
+              new JobRoleSpecification("testurl.com",
             "Test Responsibilities",
-            "Test Job Role Descriptions");
+            "Test Job Role Descriptions"));
 
     /*
       When the service getOpenJobRoles returns a JobRoleResponse List
