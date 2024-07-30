@@ -99,7 +99,6 @@ public class JobRoleDao {
                         resultSet.getString("jobRoleSpecUrl"),
                         resultSet.getString("jobRoleResponsibilities"),
                         resultSet.getString("jobRoleDescription"));
-
             }
         }
         return null;
