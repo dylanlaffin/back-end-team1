@@ -28,7 +28,8 @@ public class JobRoleDetailResponse extends JobRoleResponse {
         return jobRoleSpecification;
     }
 
-    public void setJobRoleSpecification(final JobRoleSpecification jobRoleSpecification) {
+    public void setJobRoleSpecification(
+            final JobRoleSpecification jobRoleSpecification) {
         this.jobRoleSpecification = jobRoleSpecification;
     }
 

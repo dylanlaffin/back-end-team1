@@ -28,7 +28,8 @@ public class JobRoleSpecification {
         return jobRoleResponsibilities;
     }
 
-    public void setJobRoleResponsibilities(final String jobRoleResponsibilities) {
+    public void setJobRoleResponsibilities(
+            final String jobRoleResponsibilities) {
         this.jobRoleResponsibilities = jobRoleResponsibilities;
     }
 
