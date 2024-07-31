@@ -105,7 +105,4 @@ public class JobRoleDao {
         return null;
     }
 
-
-
-
 }

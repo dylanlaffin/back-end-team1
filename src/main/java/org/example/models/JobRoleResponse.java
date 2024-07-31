@@ -25,8 +25,6 @@ public class JobRoleResponse {
      */
     private Date jobRoleClosingDate;
 
-
-
     public JobRoleResponse(
             final int jRID,
             final String jRName,
@@ -90,7 +88,6 @@ public class JobRoleResponse {
     public void setJobRoleClosingDate(final Date jobRoleClosingDate) {
         this.jobRoleClosingDate = jobRoleClosingDate;
     }
-
 
 }
 

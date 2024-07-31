@@ -4,12 +4,10 @@ import java.sql.Date;
 
 public class JobRoleDetailResponse extends JobRoleResponse {
 
-
     /*
     instantiates a job role spec Url in the Job Role Response
      */
     private JobRoleSpecification jobRoleSpecification;
-
 
     public JobRoleDetailResponse(
             final int jRID,

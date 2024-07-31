@@ -17,7 +17,7 @@ import java.sql.SQLException;
 @Path("/api/openJobRoles")
 public class JobRoleController {
     /*
-    instatiates the JOb role services
+    instatiates the Job role services
      */
     private final JobRoleService jobRoleService;
 
@@ -36,7 +36,7 @@ public class JobRoleController {
             return Response.serverError().build();
         }
     }
-
+    /*Returns a JobRoleDetailResponse when getRoleByID is requested*/
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
