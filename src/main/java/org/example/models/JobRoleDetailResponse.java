@@ -5,7 +5,11 @@ import java.sql.Date;
 public class JobRoleDetailResponse extends JobRoleResponse {
 
     /*
-    instantiates a job role spec Url in the Job Role Response
+    instantiates a job role specification,
+    this includes the job role description,
+    the job role responsibilities,
+    and the job role spec URL
+    in the jobRoleDetailResponse
      */
     private JobRoleSpecification jobRoleSpecification;
 

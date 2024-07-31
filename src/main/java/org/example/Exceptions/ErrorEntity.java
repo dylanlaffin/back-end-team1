@@ -2,7 +2,7 @@ package org.example.Exceptions;
 
 public enum ErrorEntity {
     JOBROLERESPONSE("JobRole"),
-    JOBROLEDETAILRESPONSE("JobRoleDetailResponse");
+    JRDETAILRESPONSE("JobRoleDetailResponse");
 
     private final String entity;
     ErrorEntity(final String entity) {
