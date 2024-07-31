@@ -1,7 +1,7 @@
 package org.example.services;
 
 import org.example.Exceptions.DoesNotExistException;
-import org.example.Exceptions.Entity;
+import org.example.Exceptions.ErrorEntity;
 import org.example.daos.JobRoleDao;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;
@@ -28,7 +28,7 @@ public class JobRoleService {
         JobRoleDetailResponse jobRoleDetailResponse
                 = jobRoleDao.getJobRoleByID(id);
         if (jobRoleDetailResponse == null) {
-            throw new DoesNotExistException(Entity.JOBROLEDETAILRESPONSE);
+            throw new DoesNotExistException(ErrorEntity.JOBROLEDETAILRESPONSE);
         }
         return jobRoleDetailResponse;
     }

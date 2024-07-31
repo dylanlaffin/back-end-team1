@@ -1,11 +1,11 @@
 package org.example.Exceptions;
 
-public enum Entity {
+public enum ErrorEntity {
     JOBROLERESPONSE("JobRole"),
     JOBROLEDETAILRESPONSE("JobRoleDetailResponse");
 
     private final String entity;
-    Entity(final String entity) {
+    ErrorEntity(final String entity) {
         this.entity = entity;
     }
 
