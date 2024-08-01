@@ -69,6 +69,18 @@ public class JobRoleControllerIntegrationTest {
     }
 
     @Test
+    void getJobRoles_shouldReturnUnauthorised_whenNotLoggedIn() {
+        Client client = APP.client();
+
+        Response response = client
+                .target("http://localhost:8080/api/openJobRoles")
+                .request()
+                .get();
+
+        Assertions.assertEquals(401, response.getStatus());
+    }
+
+    @Test
     void getJobRoleById_shouldReturnUnauthorised_whenNotLoggedIn() {
         Client client = APP.client();
 
