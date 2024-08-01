@@ -50,5 +50,4 @@ public class TestApplication extends Application<TestConfiguration> {
         environment.jersey().register(new ApplicationsController(
                 new ApplicationsService(new ApplicationsDao())));
     }
-
 }
