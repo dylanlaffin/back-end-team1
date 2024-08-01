@@ -4,7 +4,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiKeyAuthDefinition;
 import io.swagger.annotations.SecurityDefinition;
 import io.swagger.annotations.SwaggerDefinition;
-import org.example.Exceptions.InvalidException;
+import org.example.exceptions.InvalidException;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;
 import org.example.services.AuthService;
