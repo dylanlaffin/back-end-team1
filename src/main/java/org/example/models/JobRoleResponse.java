@@ -2,7 +2,8 @@ package org.example.models;
 
 import java.sql.Date;
 
-public class OpenJobRoleResponse {
+public class JobRoleResponse {
+    private int jobRoleID;
     /*
     instantiates a string of Job Role Name in the Job Role Response
      */
@@ -24,18 +25,28 @@ public class OpenJobRoleResponse {
      */
     private Date jobRoleClosingDate;
 
-
-    public OpenJobRoleResponse(
+    public JobRoleResponse(
+            final int jRID,
             final String jRName,
             final Locations jRLocation,
             final String jRCapability,
             final String jRBand,
             final Date jRClosingDate) {
+        this.jobRoleID = jRID;
         this.jobRoleName = jRName;
         this.jobRoleLocation = jRLocation;
         this.jobRoleCapability = jRCapability;
         this.jobRoleBand = jRBand;
         this.jobRoleClosingDate = jRClosingDate;
+
+    }
+
+    public int getJobRoleID() {
+        return jobRoleID;
+    }
+
+    public void setJobRoleID(final int jobRoleID) {
+        this.jobRoleID = jobRoleID;
     }
 
     public String getJobRoleName() {
@@ -77,5 +88,6 @@ public class OpenJobRoleResponse {
     public void setJobRoleClosingDate(final Date jobRoleClosingDate) {
         this.jobRoleClosingDate = jobRoleClosingDate;
     }
+
 }
 
