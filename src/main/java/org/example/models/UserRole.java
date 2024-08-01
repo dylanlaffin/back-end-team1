@@ -25,7 +25,7 @@ public class UserRole {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(final int roleId) {
         this.roleId = roleId;
     }
 }

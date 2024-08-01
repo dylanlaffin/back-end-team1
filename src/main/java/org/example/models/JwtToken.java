@@ -1,23 +1,22 @@
 package org.example.models;
 
 import javax.security.auth.Subject;
-import java.io.Serializable;
 import java.security.Principal;
 
-public class JwtToken implements Principal{
+public class JwtToken implements Principal {
     UserRole userRole;
 
-    public JwtToken(UserRole userRole) {
+    public JwtToken(final UserRole userRole) {
         setUserRole(userRole);
     }
 
     @Override
-    public String getName(){
+    public String getName() {
         return null;
     }
 
     @Override
-    public boolean implies(Subject subject) {
+    public boolean implies(final Subject subject) {
         return Principal.super.implies(subject);
     }
 
@@ -25,7 +24,7 @@ public class JwtToken implements Principal{
         return userRole;
     }
 
-    public void setUserRole(UserRole userRole) {
+    public void setUserRole(final UserRole userRole) {
         this.userRole = userRole;
     }
 }
