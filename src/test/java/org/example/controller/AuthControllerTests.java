@@ -2,7 +2,7 @@ package org.example.controller;
 
 
 import io.jsonwebtoken.Jwts;
-import org.example.Exceptions.InvalidException;
+import org.example.exceptions.InvalidException;
 import org.example.controllers.AuthController;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;

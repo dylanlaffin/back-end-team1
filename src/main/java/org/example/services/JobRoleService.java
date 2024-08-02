@@ -1,7 +1,7 @@
 package org.example.services;
 
-import org.example.Exceptions.DoesNotExistException;
-import org.example.Exceptions.ErrorEntity;
+import org.example.exceptions.DoesNotExistException;
+import org.example.exceptions.ErrorEntity;
 import org.example.daos.JobRoleDao;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;

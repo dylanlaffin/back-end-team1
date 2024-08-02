@@ -46,7 +46,7 @@ public class AuthIntegrationTests {
     }
 
     @Test
-    void login_shouldLThrowInvalidException_whenIncorrectCredentials(){
+    void login_shouldThrowInvalidException_whenIncorrectCredentials(){
         Client client = APP.client();
         LoginRequest login = new LoginRequest(USERNAME, "invalidpassword1234");
 

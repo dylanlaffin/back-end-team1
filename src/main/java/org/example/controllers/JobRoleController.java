@@ -3,8 +3,9 @@ package org.example.controllers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
-import org.example.Exceptions.DoesNotExistException;
+import org.example.exceptions.DoesNotExistException;
 import org.example.exceptions.DatabaseConnectionException;
+import org.example.models.JobRoleResponse;
 import org.example.models.UserRole;
 import org.example.services.JobRoleService;
 
@@ -52,6 +53,12 @@ public class JobRoleController {
     @GET
     @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({UserRole.ADMIN, UserRole.USER})
+    @ApiOperation(
+            value = "Returns specific open job role",
+            authorizations = @Authorization(value = HttpHeaders.AUTHORIZATION),
+            response = JobRoleResponse.class
+    )
     public Response getJobRoleById(@PathParam("id") final int id) {
         try {
             return Response.ok().entity(
