@@ -1,6 +1,6 @@
 package org.example.daos;
 
-import org.example.Exceptions.DatabaseConnectionException;
+import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;
 import org.example.models.User;
 import org.mindrot.jbcrypt.BCrypt;
