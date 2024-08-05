@@ -3,7 +3,7 @@ package org.example.services;
 import io.jsonwebtoken.Jwts;
 import org.example.exceptions.InvalidException;
 import org.example.daos.AuthDao;
-import org.example.exceptions.DatabaseConnectionException;
+import org.example.Exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;
 import org.example.models.User;
 

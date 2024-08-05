@@ -1,6 +1,6 @@
 package org.example.controller;
 
-import org.example.exceptions.DoesNotExistException;
+import org.example.Exceptions.DoesNotExistException;
 import org.example.controllers.JobRoleController;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;

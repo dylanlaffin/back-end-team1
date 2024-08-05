@@ -1,4 +1,4 @@
-package org.example.exceptions;
+package org.example.Exceptions;
 
 public class DoesNotExistException extends Throwable {
 
