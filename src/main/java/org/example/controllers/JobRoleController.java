@@ -1,13 +1,10 @@
 package org.example.controllers;
 
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.example.Exceptions.DoesNotExistException;
 import org.example.exceptions.DatabaseConnectionException;
-import org.example.models.User;
 import org.example.services.JobRoleService;
 
-import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
