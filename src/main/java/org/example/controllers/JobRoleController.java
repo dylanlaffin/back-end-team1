@@ -56,19 +56,17 @@ public class JobRoleController {
     }
 
     @GET
-    @Path("/{columnName}")
+    @Path("/{order}/{ByNameAsc}")
     @Produces(MediaType.APPLICATION_JSON)
-   // @RolesAllowed()
-    //@ApiOperation(
-
-    public Response orderNameByAscending(@PathParam("columnName") final String columnName) {
+    public Response jobNameAscending() {
         try {
             return Response.ok().entity(
-                    jobRoleService.orderNameByAscending(columnName)).build();
+                    jobRoleService.jobNameAscending()).build();
         } catch (SQLException | DatabaseConnectionException e) {
             return Response.serverError().build();
         }
     }
+
 
 
 

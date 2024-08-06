@@ -111,7 +111,7 @@ public class JobRoleDao {
      *
      */
 
-    public List<JobRoleResponse> orderNameByAscending()
+    public List<JobRoleResponse> jobNameAscending()
             throws SQLException, DatabaseConnectionException {
         List<JobRoleResponse> jobRoleOrderResponse = new ArrayList<>();
         try (Connection connection = DatabaseConnector.getConnection()) {
@@ -129,7 +129,7 @@ public class JobRoleDao {
                                 + "= capabilty.capabiltyID "
                                 + "Left Join `band` "
                                 + "on jobRole.bandID = band.bandID "
-                                + "where jobRoleOpen = true"
+                                + "where jobRoleOpen = true "
                                 + "Order By jobRoleName;");
 
                 while (resultSet.next()) {

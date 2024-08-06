@@ -35,9 +35,9 @@ public class JobRoleService {
         return jobRoleDetailResponse;
     }
 
-    public List<JobRoleResponse> orderNameByAscending(final String columnName)
+    public List<JobRoleResponse> jobNameAscending()
             throws SQLException, DatabaseConnectionException {
-        return jobRoleDao.orderNameByAscending();
+        return jobRoleDao.jobNameAscending();
     }
 
 }
