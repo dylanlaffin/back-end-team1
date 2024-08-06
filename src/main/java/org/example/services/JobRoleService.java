@@ -6,12 +6,14 @@ import org.example.daos.JobRoleDao;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;
 import org.example.models.JobRoleResponse;
+import org.example.models.Order;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class JobRoleService {
     JobRoleDao jobRoleDao;
+    Order roleOrdering;
 
     public JobRoleService(final JobRoleDao jobRoleDao) {
         this.jobRoleDao = jobRoleDao;
@@ -33,5 +35,9 @@ public class JobRoleService {
         return jobRoleDetailResponse;
     }
 
+    public List<JobRoleResponse> orderNameByAscending(final String columnName)
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.orderNameByAscending();
+    }
 
 }

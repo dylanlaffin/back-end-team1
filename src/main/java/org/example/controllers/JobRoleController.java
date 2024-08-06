@@ -1,10 +1,13 @@
 package org.example.controllers;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.example.Exceptions.DoesNotExistException;
 import org.example.exceptions.DatabaseConnectionException;
+import org.example.models.User;
 import org.example.services.JobRoleService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -51,4 +54,22 @@ public class JobRoleController {
                     .entity(e.getMessage()).build();
         }
     }
+
+    @GET
+    @Path("/{columnName}")
+    @Produces(MediaType.APPLICATION_JSON)
+   // @RolesAllowed()
+    //@ApiOperation(
+
+    public Response orderNameByAscending(@PathParam("columnName") final String columnName) {
+        try {
+            return Response.ok().entity(
+                    jobRoleService.orderNameByAscending(columnName)).build();
+        } catch (SQLException | DatabaseConnectionException e) {
+            return Response.serverError().build();
+        }
+    }
+
+
+
 }
