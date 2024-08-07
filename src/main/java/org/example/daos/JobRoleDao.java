@@ -122,7 +122,7 @@ public class JobRoleDao {
                         "Select jobRoleID, jobRoleName, "
                                 + "jobRoleLocation, capabilityName, bandName, "
                                 + "jobRoleClosingDate "
-                                + "from `jobRole`"
+                                + "from `jobRole` "
                                 + "Left Join `capabilty` "
                                 + "on jobRole.capabiltyID "
                                 + "= capabilty.capabiltyID "

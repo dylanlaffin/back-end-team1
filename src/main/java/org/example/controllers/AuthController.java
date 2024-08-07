@@ -1,7 +1,7 @@
 package org.example.controllers;
 
 import io.swagger.annotations.Api;
-import org.example.Exceptions.InvalidException;
+import org.example.exceptions.InvalidException;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.LoginRequest;
 import org.example.services.AuthService;
