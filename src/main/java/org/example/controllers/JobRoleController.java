@@ -63,7 +63,7 @@ public class JobRoleController {
                         if (order.equals("asc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobNameByAscending()).build();
-                        } else {
+                        } else if (order.equals("desc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobNameDescending()).build();
                         }
@@ -71,7 +71,7 @@ public class JobRoleController {
                         if (order.equals("asc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobBandAscending()).build();
-                        } else {
+                        } else if (order.equals("desc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobBandDescending()).build();
                         }
@@ -79,7 +79,7 @@ public class JobRoleController {
                         if (order.equals("asc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobCapabilityAscending()).build();
-                        } else {
+                        } else if (order.equals("desc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobCapabilityDescending()).build();
                         }
@@ -87,7 +87,7 @@ public class JobRoleController {
                         if (order.equals("asc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobLocationAscending()).build();
-                        } else {
+                        } else if (order.equals("desc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobLocationDescending()).build();
                         }
@@ -95,7 +95,7 @@ public class JobRoleController {
                         if (order.equals("asc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobClosingDateAscending()).build();
-                        } else {
+                        } else if (order.equals("desc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobClosingDateDescending()).build();
                         }
