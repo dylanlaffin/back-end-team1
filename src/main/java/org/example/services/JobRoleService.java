@@ -38,4 +38,38 @@ public class JobRoleService {
         return jobRoleDao.jobNameAscending();
     }
 
+    public List<JobRoleResponse> jobNameDescending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobNameDescending();
+    }
+
+    public List<JobRoleResponse> jobLocationAscending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobLocationAscending();
+    }
+
+    public List<JobRoleResponse> jobLocationDescending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobLocationDescending();
+    }
+
+    public List<JobRoleResponse> jobBandAscending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobBandAscending();
+    }
+
+    public List<JobRoleResponse> jobBandDescending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobBandDescending();
+    }
+
+    public List<JobRoleResponse> jobClosingDateAscending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobClosingDateAscending();
+    }
+
+    public List<JobRoleResponse> jobClosingDateDescending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobClosingDateDescending();
+    }
 }
