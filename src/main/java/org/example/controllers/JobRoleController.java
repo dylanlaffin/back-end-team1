@@ -91,7 +91,7 @@ public class JobRoleController {
                             return Response.ok().entity(
                                     jobRoleService.jobLocationDescending()).build();
                         }
-                    case "closing date":
+                    case "closingDate":
                         if (order.equals("asc")) {
                             return Response.ok().entity(
                                     jobRoleService.jobClosingDateAscending()).build();
