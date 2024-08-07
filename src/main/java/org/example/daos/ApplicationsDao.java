@@ -8,19 +8,32 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ApplicationsDao {
-    public boolean updateStatus(final ApplicationRequest update)
+    public boolean addNewApplication(final ApplicationRequest addition)
             throws DatabaseConnectionException, SQLException {
         try (Connection connection = DatabaseConnector.getConnection()) {
-            String query = "UPDATE applications SET "
-                    + "StatusID=? WHERE ApplicationID=?";
+            String query = "INSERT INTO applications(Username, StatusID,"
+                    + " ApplicationURL) VALUES (?, ?, ?)";
+
 
             PreparedStatement ps = connection.prepareStatement(query);
-            ps.setInt(1, Integer.parseInt(update.getStatus()));
-            ps.setInt(2, update.getApplicationID());
+            ps.setString(1, addition.getUsername());
+            ps.setInt(2, getStatusID(addition.getStatus()));
+            ps.setString(3, addition.getApplicationURL());
 
-            int result = ps.executeUpdate();
+            return ps.executeUpdate() != 0;
+        }
+    }
 
-            return result != 0;
+    private int getStatusID(final String status) {
+        switch (status) {
+            case "HIRED":
+                return 1;
+            case "REJECTED":
+                return 2;
+            case "IN_PROGRESS":
+                return 3;
+            default:
+                return -1;
         }
     }
 }
