@@ -1,6 +1,6 @@
 package org.example.controller;
 
-import org.example.Exceptions.DoesNotExistException;
+import org.example.exceptions.DoesNotExistException;
 import org.example.controllers.JobRoleController;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;
@@ -23,14 +23,6 @@ public class JobRoleControllerTest {
 
     private final JobRoleController jobRoleController =
             new JobRoleController(jobRoleService);
-
-    private final JobRoleResponse jobRoleResponse = new JobRoleResponse(
-            1,
-            "MaryJane1",
-            Locations.BELFAST,
-            "HR",
-            "Associate",
-            new Date(2024 - 7 - 15));
 
     JobRoleDetailResponse jobRoleDetailResponse = new JobRoleDetailResponse(
             1,

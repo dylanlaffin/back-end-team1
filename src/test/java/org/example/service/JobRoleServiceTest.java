@@ -1,6 +1,6 @@
 package org.example.service;
 
-import org.example.Exceptions.DoesNotExistException;
+import org.example.exceptions.DoesNotExistException;
 import org.example.daos.JobRoleDao;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleDetailResponse;
@@ -27,14 +27,6 @@ public class JobRoleServiceTest {
     JobRoleDao jobRoleDao = Mockito.mock(JobRoleDao.class);
 
     JobRoleService jobRoleService = new JobRoleService(jobRoleDao);
-
-    JobRoleResponse jobRoleResponse = new JobRoleResponse(
-            1,
-            "MaryJane1",
-            Locations.BELFAST,
-            "Delivery",
-            "Associate",
-            new Date(2024 - 7 - 15));
 
     JobRoleDetailResponse jobRoleDetailResponse = new JobRoleDetailResponse(
             1,
@@ -123,7 +115,7 @@ public class JobRoleServiceTest {
 
     @Test
     void getJobRolesById_shouldThrowDoesNotExistException_whenDaoReturnsNull()
-            throws SQLException, DatabaseConnectionException, DoesNotExistException {
+            throws SQLException, DatabaseConnectionException {
         Mockito.when(jobRoleDao.getJobRoleByID(1)).thenReturn(null);
 
         assertThrows(DoesNotExistException.class, ()-> jobRoleService.getJobRoleById(1));
