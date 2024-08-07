@@ -103,10 +103,39 @@ public class JobRoleController {
         }
     }
 
+    /*Returns an ordered list in ascending order by job role capability*/
+    @GET
+    @Path("/{order}/{ByNameAsc}/{ByNameDesc}/{ByLocationAsc}/{ByLocationDesc}"
+            + "/{ByCapabilityAsc}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response jobCapabilityAscending() {
+        try {
+            return Response.ok().entity(
+                    jobRoleService.jobCapabilityAscending()).build();
+        } catch (SQLException | DatabaseConnectionException e) {
+            return Response.serverError().build();
+        }
+    }
+
+    /*Returns an ordered list in descending order by job role capability*/
+    @GET
+    @Path("/{order}/{ByNameAsc}/{ByNameDesc}/{ByLocationAsc}/{ByLocationDesc}"
+            + "/{ByCapabilityAsc}/{ByCapabilityDesc}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response jobCapabilityDescending() {
+        try {
+            return Response.ok().entity(
+                    jobRoleService.jobCapabilityDescending()).build();
+        } catch (SQLException | DatabaseConnectionException e) {
+            return Response.serverError().build();
+        }
+    }
+
+
     /*Returns an ordered list in ascending order by job role band*/
     @GET
     @Path("/{order}/{ByNameAsc}/{ByNameDesc}/{ByLocationAsc}/{ByLocationDesc}"
-            + "/{ByBandAsc}")
+            + "/{ByCapabilityAsc}/{ByCapabilityDesc}/{ByBandAsc}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response jobBandAscending() {
         try {
@@ -120,7 +149,7 @@ public class JobRoleController {
     /*Returns an ordered list in descending order by job role band*/
     @GET
     @Path("/{order}/{ByNameAsc}/{ByNameDesc}/{ByLocationAsc}/{ByLocationDesc}"
-            + "/{ByBandAsc}/{ByBandDesc}")
+            + "/{ByCapabilityAsc}/{ByCapabilityDesc}/{ByBandAsc}/{ByBandDesc}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response jobBandDescending() {
         try {
@@ -134,7 +163,8 @@ public class JobRoleController {
     /*Returns an ordered list in ascending order by job role closing date*/
     @GET
     @Path("/{order}/{ByNameAsc}/{ByNameDesc}/{ByLocationAsc}/{ByLocationDesc}"
-            + "/{ByBandAsc}/{ByBandDesc}/{ByClosingDateAsc}")
+            + "/{ByCapabilityAsc}/{ByCapabilityDesc}/{ByBandAsc}/{ByBandDesc}"
+            + "/{ByClosingDateAsc}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response jobClosingDateAscending() {
         try {
@@ -145,11 +175,11 @@ public class JobRoleController {
         }
     }
 
-    /*Returns an ordered list in ascending order by job role closing date*/
+    /*Returns an ordered list in descending order by job role closing date*/
     @GET
     @Path("/{order}/{ByNameAsc}/{ByNameDesc}/{ByLocationAsc}/{ByLocationDesc}"
-            + "/{ByBandAsc}/{ByBandDesc}/{ByClosingDateAsc}/"
-            + "{ByClosingDateDesc}")
+            + "/{ByCapabilityAsc}/{ByCapabilityDesc}/{ByBandAsc}/{ByBandDesc}"
+            + "/{ByClosingDateAsc}/{ByClosingDateDesc}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response jobClosingDateDescending() {
         try {

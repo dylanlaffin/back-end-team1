@@ -285,6 +285,96 @@ public class JobRoleDao {
     }
 
     /**
+     * DAO method to order job role capability in ascending order from the
+     * database.
+     *
+     */
+    public List<JobRoleResponse> jobCapabilityAscending()
+            throws SQLException, DatabaseConnectionException {
+        List<JobRoleResponse> jobRoleOrderResponse = new ArrayList<>();
+        try (Connection connection = DatabaseConnector.getConnection()) {
+            if (connection != null) {
+                Statement statement = connection.createStatement();
+
+                ResultSet resultSet;
+                resultSet = statement.executeQuery(
+                        "Select jobRoleID, jobRoleName, "
+                                + "jobRoleLocation, capabilityName, bandName, "
+                                + "jobRoleClosingDate "
+                                + "from `jobRole`"
+                                + "Left Join `capabilty` "
+                                + "on jobRole.capabiltyID "
+                                + "= capabilty.capabiltyID "
+                                + "Left Join `band` "
+                                + "on jobRole.bandID = band.bandID "
+                                + "where jobRoleOpen = true "
+                                + "Order By capabilityName;");
+
+                while (resultSet.next()) {
+                    JobRoleResponse
+                            jobRoleResponse = new JobRoleResponse(
+                            resultSet.getInt("jobRoleID"),
+                            resultSet.getString("jobRoleName"),
+                            Locations.valueOf(
+                                    resultSet.getString("jobRoleLocation")),
+                            resultSet.getString("capabilityName"),
+                            resultSet.getString("bandName"),
+                            resultSet.getDate("jobRoleClosingDate"));
+
+                    jobRoleOrderResponse.add(jobRoleResponse);
+                }
+                return jobRoleOrderResponse;
+            }
+            return jobRoleOrderResponse;
+        }
+    }
+
+    /**
+     * DAO method to order job role capability in descending order from the
+     * database.
+     *
+     */
+    public List<JobRoleResponse> jobCapabilityDescending()
+            throws SQLException, DatabaseConnectionException {
+        List<JobRoleResponse> jobRoleOrderResponse = new ArrayList<>();
+        try (Connection connection = DatabaseConnector.getConnection()) {
+            if (connection != null) {
+                Statement statement = connection.createStatement();
+
+                ResultSet resultSet;
+                resultSet = statement.executeQuery(
+                        "Select jobRoleID, jobRoleName, "
+                                + "jobRoleLocation, capabilityName, bandName, "
+                                + "jobRoleClosingDate "
+                                + "from `jobRole`"
+                                + "Left Join `capabilty` "
+                                + "on jobRole.capabiltyID "
+                                + "= capabilty.capabiltyID "
+                                + "Left Join `band` "
+                                + "on jobRole.bandID = band.bandID "
+                                + "where jobRoleOpen = true "
+                                + "Order By capabilityName DESC;");
+
+                while (resultSet.next()) {
+                    JobRoleResponse
+                            jobRoleResponse = new JobRoleResponse(
+                            resultSet.getInt("jobRoleID"),
+                            resultSet.getString("jobRoleName"),
+                            Locations.valueOf(
+                                    resultSet.getString("jobRoleLocation")),
+                            resultSet.getString("capabilityName"),
+                            resultSet.getString("bandName"),
+                            resultSet.getDate("jobRoleClosingDate"));
+
+                    jobRoleOrderResponse.add(jobRoleResponse);
+                }
+                return jobRoleOrderResponse;
+            }
+            return jobRoleOrderResponse;
+        }
+    }
+
+    /**
      * DAO method to order job band names in Ascending order from the database.
      *
      */

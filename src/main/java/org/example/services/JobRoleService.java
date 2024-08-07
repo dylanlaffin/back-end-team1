@@ -53,6 +53,16 @@ public class JobRoleService {
         return jobRoleDao.jobLocationDescending();
     }
 
+    public List<JobRoleResponse> jobCapabilityAscending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobCapabilityAscending();
+    }
+
+    public List<JobRoleResponse> jobCapabilityDescending()
+            throws SQLException, DatabaseConnectionException {
+        return jobRoleDao.jobCapabilityDescending();
+    }
+
     public List<JobRoleResponse> jobBandAscending()
             throws SQLException, DatabaseConnectionException {
         return jobRoleDao.jobBandAscending();
