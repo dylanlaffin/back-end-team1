@@ -48,4 +48,30 @@ public class JobRoleControllerIntegrationTest {
         Assertions.assertEquals(200, response.getStatus());
     }
 
+    /*
+   when calling getJobRolesByOrder
+   expect list of JobRoleResponses in order
+    */
+    @Test
+    void getJobRolesByOrder_shouldReturnListOfJobRolesInOrder() {
+        Client client = APP.client();
+
+        //job name in ascending order
+        List<JobRoleResponse> response = client
+                .target("http://localhost:8080/api/openJobRoles/asc/name")
+                .request()
+                .get(List.class);
+
+        Assertions.assertFalse(response.isEmpty());
+
+        //job name in descending order
+        List<JobRoleResponse> response2 = client
+                .target("http://localhost:8080/api/openJobRoles/desc/name")
+                .request()
+                .get(List.class);
+
+        Assertions.assertFalse(response.isEmpty());
+
+
+    }
 }

@@ -2,7 +2,6 @@ package org.example.controllers;
 import io.swagger.annotations.Api;
 import org.example.exceptions.DoesNotExistException;
 import org.example.exceptions.DatabaseConnectionException;
-import org.example.models.Order;
 import org.example.services.JobRoleService;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
