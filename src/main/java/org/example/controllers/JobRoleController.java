@@ -65,7 +65,7 @@ public class JobRoleController {
                     jobRoleService.getJobRoleById(id)).build();
         } catch (SQLException | DatabaseConnectionException e) {
             return Response.serverError().build();
-        } catch ( DoesNotExistException) {
+        } catch ( DoesNotExistException e) {
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(e.getMessage()).build();
         }
