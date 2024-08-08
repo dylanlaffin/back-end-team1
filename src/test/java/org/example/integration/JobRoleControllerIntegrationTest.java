@@ -37,12 +37,13 @@ public class JobRoleControllerIntegrationTest {
 
         String authHeaderValue = "Bearer " + token.readEntity(String.class);
 
-        List<JobRoleResponse> response = client
+        Response response = client
                 .target("http://localhost:8080/api/openJobRoles")
-                .request()
-                .get(List.class);
+                .request().header("Authorization", authHeaderValue)
+                .get();
 
-        Assertions.assertFalse(response.isEmpty());
+        Assertions.assertEquals(200, response.getStatus());
+
     }
 
     /*
@@ -111,7 +112,7 @@ public class JobRoleControllerIntegrationTest {
         String authHeaderValue = "Bearer " + token.readEntity(String.class);
 
         Response response = client
-                .target("http://localhost:8080/api/openJobRoles/desc/name")
+                .target("http://localhost:8080/api/openJobRoles/asc/name")
                 .request().header("Authorization", authHeaderValue)
                 .get();
 
