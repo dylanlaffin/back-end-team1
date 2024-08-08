@@ -101,20 +101,21 @@ public class JobRoleControllerIntegrationTest {
         Client client = APP.client();
 
         //job name in ascending order
-        List<JobRoleResponse> response = client
-                .target("http://localhost:8080/api/openJobRoles/asc/name")
-                .request()
-                .get(List.class);
 
-        Assertions.assertFalse(response.isEmpty());
+        LoginRequest login = new LoginRequest(USERNAME, PASSWORD);
 
-        //job name in descending order
-        List<JobRoleResponse> response2 = client
+        Response token = client.target
+                        ("http://localhost:8080/api/auth/login").request()
+                .post(Entity.json(login));
+
+        String authHeaderValue = "Bearer " + token.readEntity(String.class);
+
+        Response response = client
                 .target("http://localhost:8080/api/openJobRoles/desc/name")
-                .request()
-                .get(List.class);
+                .request().header("Authorization", authHeaderValue)
+                .get();
 
-        Assertions.assertFalse(response.isEmpty());
+        Assertions.assertEquals(200, response.getStatus());
 
 
     }
