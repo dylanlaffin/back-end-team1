@@ -88,7 +88,7 @@ public class JobRoleDao {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 return new JobRoleDetailResponse(
                         resultSet.getInt("jobRoleID"),
                         resultSet.getString("jobRoleName"),

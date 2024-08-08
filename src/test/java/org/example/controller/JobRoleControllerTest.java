@@ -24,14 +24,6 @@ public class JobRoleControllerTest {
     private final JobRoleController jobRoleController =
             new JobRoleController(jobRoleService);
 
-    private final JobRoleResponse jobRoleResponse = new JobRoleResponse(
-            1,
-            "MaryJane1",
-            Locations.BELFAST,
-            "HR",
-            "Associate",
-            new Date(2024 - 7 - 15));
-
     JobRoleDetailResponse jobRoleDetailResponse = new JobRoleDetailResponse(
             1,
             "Technical Architect",
