@@ -124,7 +124,7 @@ public class JobRoleServiceTest {
 
     @Test
     void getJobRolesById_shouldThrowDoesNotExistException_whenDaoReturnsNull()
-            throws SQLException, DatabaseConnectionException, DoesNotExistException {
+            throws SQLException, DatabaseConnectionException {
         Mockito.when(jobRoleDao.getJobRoleByID(1)).thenReturn(null);
 
         assertThrows(DoesNotExistException.class, ()-> jobRoleService.getJobRoleById(1));

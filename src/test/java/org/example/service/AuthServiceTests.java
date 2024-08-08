@@ -12,11 +12,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.security.Key;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Base64;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 public class AuthServiceTests {
@@ -25,8 +23,6 @@ public class AuthServiceTests {
 
     Key jwtKey = Jwts.SIG.HS256.key().build();
     AuthService service = new AuthService(dao, jwtKey);
-
-    Connection conn;
 
     String USERNAME = System.getenv().get("LOGIN_USER");
     String PASSWORD = System.getenv().get("LOGIN_PASS");
@@ -56,7 +52,7 @@ public class AuthServiceTests {
 
     @Test
     void login_shouldThrowInvalidException_whenInvalidCredentialsAreGiven()
-            throws SQLException, InvalidException, DatabaseConnectionException {
+            throws SQLException, DatabaseConnectionException {
         LoginRequest login = new LoginRequest(USERNAME, "invalidpassword1234");
 
         when(dao.getUser(login)).thenReturn(null);
