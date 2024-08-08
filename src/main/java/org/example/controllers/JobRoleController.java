@@ -3,8 +3,8 @@ package org.example.controllers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
-import org.example.exceptions.DoesNotExistException;
 import org.example.exceptions.DatabaseConnectionException;
+import org.example.exceptions.DoesNotExistException;
 import org.example.models.JobRoleResponse;
 import org.example.models.UserRole;
 import org.example.services.JobRoleService;
@@ -65,7 +65,7 @@ public class JobRoleController {
                     jobRoleService.getJobRoleById(id)).build();
         } catch (SQLException | DatabaseConnectionException e) {
             return Response.serverError().build();
-        } catch (DoesNotExistException e) {
+        } catch ( DoesNotExistException) {
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(e.getMessage()).build();
         }
@@ -81,8 +81,7 @@ public class JobRoleController {
             response = List.class
     )
     public Response getJobRolesByOrder(
-            @PathParam("order") final String order, @PathParam("OrderBy")
-    String OrderBy) {
+    @PathParam("order") final String order, @PathParam("OrderBy") final String OrderBy) {
         try {
             switch (OrderBy) {
                 case "name":
