@@ -75,56 +75,64 @@ public class JobRoleController {
     @Path("/{order}/{OrderBy}")
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({UserRole.ADMIN, UserRole.USER})
-    @ApiOperation( value = "Returns all open job roles",
+    @ApiOperation(
+            value = "Returns all open job roles",
             authorizations = @Authorization(value = HttpHeaders.AUTHORIZATION),
-            response = List.class)
+            response = List.class
+    )
     public Response getJobRolesByOrder(
-            @PathParam("order") final String order, @PathParam("OrderBy") String OrderBy) {
-            try {
-                switch (OrderBy) {
-                    case "name":
-                        if (order.equals("asc")) {
-                            return Response.ok().entity(
-                                    jobRoleService.jobNameByAscending()).build();
+            @PathParam("order") final String order, @PathParam("OrderBy")
+    String OrderBy) {
+        try {
+            switch (OrderBy) {
+                case "name":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobNameByAscending()).build();
                         } else if (order.equals("desc")) {
-                            return Response.ok().entity(
+                        return Response.ok().entity(
                                     jobRoleService.jobNameDescending()).build();
                         }
-                    case "band":
-                        if (order.equals("asc")) {
-                            return Response.ok().entity(
-                                    jobRoleService.jobBandAscending()).build();
+                case "band":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobBandAscending()).build();
                         } else if (order.equals("desc")) {
-                            return Response.ok().entity(
-                                    jobRoleService.jobBandDescending()).build();
+                        return Response.ok().entity(
+                                jobRoleService.jobBandDescending()).build();
                         }
-                    case "capability":
-                        if (order.equals("asc")) {
-                            return Response.ok().entity(
-                                    jobRoleService.jobCapabilityAscending()).build();
+                case "capability":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobCapabilityAscending()).
+                                build();
                         } else if (order.equals("desc")) {
                             return Response.ok().entity(
-                                    jobRoleService.jobCapabilityDescending()).build();
+                                    jobRoleService.jobCapabilityDescending()).
+                                    build();
                         }
-                    case "location":
-                        if (order.equals("asc")) {
-                            return Response.ok().entity(
-                                    jobRoleService.jobLocationAscending()).build();
+                case "location":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobLocationAscending()).build();
                         } else if (order.equals("desc")) {
-                            return Response.ok().entity(
-                                    jobRoleService.jobLocationDescending()).build();
+                        return Response.ok().entity(
+                                jobRoleService.jobLocationDescending()).build();
                         }
-                    case "closingDate":
-                        if (order.equals("asc")) {
-                            return Response.ok().entity(
-                                    jobRoleService.jobClosingDateAscending()).build();
+                case "closingDate":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobClosingDateAscending()).
+                                build();
                         } else if (order.equals("desc")) {
-                            return Response.ok().entity(
-                                    jobRoleService.jobClosingDateDescending()).build();
+                        return Response.ok().entity(
+                                jobRoleService.jobClosingDateDescending()).
+                                build();
                         }
 
-                    default:
-                        throw new IllegalStateException("Unexpected value: " + order);
+                default:
+                        throw new IllegalStateException("Unexpected value: "
+                                + order);
                 }
             } catch (SQLException | DatabaseConnectionException e) {
                 return Response.serverError().build();
