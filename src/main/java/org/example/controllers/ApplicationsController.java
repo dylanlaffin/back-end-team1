@@ -33,7 +33,7 @@ public class ApplicationsController {
     @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({UserRole.ADMIN, UserRole.USER})
     @ApiOperation(
-            value = "Returns all open job roles",
+            value = "Adds the application to db",
             authorizations = @Authorization(value = HttpHeaders.AUTHORIZATION),
             response = Boolean.class
     )

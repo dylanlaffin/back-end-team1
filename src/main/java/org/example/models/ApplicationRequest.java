@@ -30,9 +30,15 @@ public class ApplicationRequest {
         return status;
     }
 
-
     public String getApplicationURL() {
         return applicationURL;
     }
 
+    public void setStatus(final String status) {
+        this.status = status;
+    }
+
+    public void setApplicationURL(final String applicationURL) {
+        this.applicationURL = applicationURL;
+    }
 }
