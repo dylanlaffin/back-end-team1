@@ -33,7 +33,6 @@ public class JobRoleService {
         return jobRoleDetailResponse;
     }
 
-
     public List<JobRoleResponse> jobNameByAscending()
             throws SQLException, DatabaseConnectionException {
         return jobRoleDao.jobNameAscending();
