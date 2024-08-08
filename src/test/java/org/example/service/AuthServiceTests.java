@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
 import java.security.Key;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Base64;
 

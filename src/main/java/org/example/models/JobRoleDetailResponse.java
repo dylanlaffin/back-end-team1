@@ -13,6 +13,7 @@ public class JobRoleDetailResponse extends JobRoleResponse {
      */
     private JobRoleSpecification jobRoleSpecification;
 
+    @SuppressWarnings("checkstyle:ParameterNumber")
     public JobRoleDetailResponse(
             final int jRID,
             final String jobRoleName,
@@ -20,9 +21,10 @@ public class JobRoleDetailResponse extends JobRoleResponse {
             final String jobRoleCapability,
             final String jRBand,
             final Date jRClosingDate,
-            final JobRoleSpecification jRSpecification) {
+            final JobRoleSpecification jRSpecification,
+            final int numOpenPos) {
         super(jRID, jobRoleName, jobRoleLocation, jobRoleCapability,
-                jRBand, jRClosingDate);
+                jRBand, jRClosingDate, numOpenPos);
         this.jobRoleSpecification = jRSpecification;
     }
 

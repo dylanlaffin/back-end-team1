@@ -33,7 +33,7 @@ public class JobRoleControllerTest {
             new Date(2024 - 7 - 15),
               new JobRoleSpecification("testurl.com",
             "Test Responsibilities",
-            "Test Job Role Descriptions"));
+            "Test Job Role Descriptions"), 1);
 
     /*
       When the service getOpenJobRoles returns a JobRoleResponse List

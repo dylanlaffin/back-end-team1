@@ -8,10 +8,13 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import io.federecio.dropwizard.swagger.SwaggerBundle;
 import io.federecio.dropwizard.swagger.SwaggerBundleConfiguration;
+import org.example.controllers.ApplicationsController;
 import org.example.auth.JwtAuthenticator;
 import org.example.auth.RoleAuthoriser;
 import org.example.controllers.JobRoleController;
+import org.example.daos.ApplicationsDao;
 import org.example.daos.JobRoleDao;
+import org.example.services.ApplicationsService;
 import org.example.models.JwtToken;
 import org.example.services.JobRoleService;
 import io.jsonwebtoken.Jwts;
@@ -65,5 +68,8 @@ public class TestApplication extends Application<TestConfiguration> {
 
         environment.jersey().register(new AuthController(new AuthService(
                 new AuthDao(), jwtKey)));
+
+        environment.jersey().register(new ApplicationsController(
+                new ApplicationsService(new ApplicationsDao())));
     }
 }

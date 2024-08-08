@@ -28,6 +28,15 @@ public class JobRoleServiceTest {
 
     JobRoleService jobRoleService = new JobRoleService(jobRoleDao);
 
+    JobRoleResponse jobRoleResponse = new JobRoleResponse(
+            1,
+            "MaryJane1",
+            Locations.BELFAST,
+            "Delivery",
+            "Associate",
+            new Date(2024 - 7 - 15),
+            1);
+
     JobRoleDetailResponse jobRoleDetailResponse = new JobRoleDetailResponse(
             1,
             "Technical Architect",
@@ -38,7 +47,7 @@ public class JobRoleServiceTest {
             new JobRoleSpecification(
                     "testurl.com",
                     "Test Responsibilities",
-                    "Test Job Role Descriptions"));
+                    "Test Job Role Descriptions"), 1);
 
 
     List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();

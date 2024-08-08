@@ -30,7 +30,7 @@ public class JobRoleDao {
                 resultSet = statement.executeQuery(
                         "Select jobRoleID, jobRoleName, "
                                 + "jobRoleLocation, capabilityName, bandName, "
-                                + "jobRoleClosingDate "
+                                + "jobRoleClosingDate, numOpenPos "
                                 + "from `jobRole`"
                                 + "Left Join `capabilty` "
                                 + "on jobRole.capabiltyID "
@@ -47,7 +47,8 @@ public class JobRoleDao {
                                     resultSet.getString("jobRoleLocation")),
                             resultSet.getString("capabilityName"),
                             resultSet.getString("bandName"),
-                            resultSet.getDate("jobRoleClosingDate"));
+                            resultSet.getDate("jobRoleClosingDate"),
+                            resultSet.getInt("numOpenPos"));
 
                     jobRoleResponses.add(jobRoleResponse);
                 }
@@ -71,7 +72,8 @@ public class JobRoleDao {
                     + "jobRoleClosingDate, "
                     + "jobRoleSpecUrl, "
                     + "jobRoleResponsibilities, "
-                    + "jobRoleDescription "
+                    + "jobRoleDescription, "
+                    + "numOpenPos "
                     + "from `jobRole`"
                     + "Left Join `capabilty` "
                     + "on jobRole.capabiltyID "
@@ -99,7 +101,8 @@ public class JobRoleDao {
                         new JobRoleSpecification(
                         resultSet.getString("jobRoleSpecUrl"),
                         resultSet.getString("jobRoleResponsibilities"),
-                        resultSet.getString("jobRoleDescription")));
+                        resultSet.getString("jobRoleDescription")),
+                        resultSet.getInt("numOpenPos"));
             }
         }
         return null;

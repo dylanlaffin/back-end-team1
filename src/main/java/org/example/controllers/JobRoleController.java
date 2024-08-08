@@ -1,9 +1,9 @@
 package org.example.controllers;
 
 import io.swagger.annotations.Api;
+import org.example.exceptions.DoesNotExistException;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
-import org.example.exceptions.DoesNotExistException;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleResponse;
 import org.example.models.UserRole;
