@@ -3,8 +3,8 @@ package org.example.controllers;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Authorization;
-import org.example.exceptions.DoesNotExistException;
 import org.example.exceptions.DatabaseConnectionException;
+import org.example.exceptions.DoesNotExistException;
 import org.example.models.JobRoleResponse;
 import org.example.models.UserRole;
 import org.example.services.JobRoleService;
@@ -24,7 +24,7 @@ import java.util.List;
 @Path("/api/openJobRoles")
 public class JobRoleController {
     /*
-    instatiates the Job role services
+    instantiates the Job role services
      */
     private final JobRoleService jobRoleService;
 
@@ -69,5 +69,73 @@ public class JobRoleController {
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(e.getMessage()).build();
         }
+    }
+
+    @GET
+    @Path("/{order}/{OrderBy}")
+    @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({UserRole.ADMIN, UserRole.USER})
+    @ApiOperation(
+            value = "Returns all open job roles",
+            authorizations = @Authorization(value = HttpHeaders.AUTHORIZATION),
+            response = List.class
+    )
+    public Response getJobRolesByOrder(
+    @PathParam("order") final String order,
+    @PathParam("OrderBy") final String orderBy) {
+        try {
+            switch (orderBy) {
+                case "name":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobNameByAscending()).build();
+                        } else if (order.equals("desc")) {
+                        return Response.ok().entity(
+                                    jobRoleService.jobNameDescending()).build();
+                        }
+                case "band":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobBandAscending()).build();
+                        } else if (order.equals("desc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobBandDescending()).build();
+                        }
+                case "capability":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobCapabilityAscending()).
+                                build();
+                        } else if (order.equals("desc")) {
+                            return Response.ok().entity(
+                                    jobRoleService.jobCapabilityDescending()).
+                                    build();
+                        }
+                case "location":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobLocationAscending()).build();
+                        } else if (order.equals("desc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobLocationDescending()).build();
+                        }
+                case "closingDate":
+                    if (order.equals("asc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobClosingDateAscending()).
+                                build();
+                        } else if (order.equals("desc")) {
+                        return Response.ok().entity(
+                                jobRoleService.jobClosingDateDescending()).
+                                build();
+                        }
+
+                default:
+                        throw new IllegalStateException("Unexpected value: "
+                                + order);
+                }
+            } catch (SQLException | DatabaseConnectionException e) {
+                return Response.serverError().build();
+            }
     }
 }

@@ -147,4 +147,187 @@ public class JobRoleControllerTest {
 
     }
 
+    /*
+      When the service getOpenJobRoles in order returns an ordered JobRoleResponse List
+      Expect ordered JobRoleResponse List to be returned in response to GetJobRoles
+     */
+    @Test
+    void getJobRolesByOrder_shouldReturnJobRolesResponseList_whenGetAllJobRolesReturnsJobRoleResponseList()
+            throws
+            SQLException, DatabaseConnectionException {
+        List<JobRoleResponse> jobRoleResponseList = new ArrayList<>();
+        String order1 = "asc";
+        String order2 = "desc";
+        String name = "name";
+        String capability = "capability";
+        String band = "band";
+        String location = "location";
+        String closingDate= "closingDate";
+
+        when(jobRoleService.getOpenJobRoles()).thenReturn(jobRoleResponseList);
+
+        Response response = jobRoleController.getJobRolesByOrder(order1,name);
+        assertEquals(200, response.getStatus());
+        assertEquals(jobRoleResponseList, response.getEntity());
+
+        Response response2 = jobRoleController.getJobRolesByOrder(order2,name);
+        assertEquals(200, response2.getStatus());
+        assertEquals(jobRoleResponseList, response2.getEntity());
+
+        Response response3 = jobRoleController.getJobRolesByOrder(order1,band);
+        assertEquals(200, response3.getStatus());
+        assertEquals(jobRoleResponseList, response3.getEntity());
+
+        Response response4 = jobRoleController.getJobRolesByOrder(order2,band);
+        assertEquals(200, response4.getStatus());
+        assertEquals(jobRoleResponseList, response4.getEntity());
+
+        Response response5 = jobRoleController.getJobRolesByOrder(order1,capability);
+        assertEquals(200, response5.getStatus());
+        assertEquals(jobRoleResponseList, response5.getEntity());
+
+        Response response6 = jobRoleController.getJobRolesByOrder(order2, capability);
+        assertEquals(200, response6.getStatus());
+        assertEquals(jobRoleResponseList, response6.getEntity());
+
+        Response response7 = jobRoleController.getJobRolesByOrder(order1,location);
+        assertEquals(200, response7.getStatus());
+        assertEquals(jobRoleResponseList, response7.getEntity());
+
+        Response response8 = jobRoleController.getJobRolesByOrder(order2,location);
+        assertEquals(200, response8.getStatus());
+        assertEquals(jobRoleResponseList, response8.getEntity());
+
+        Response response9 = jobRoleController.getJobRolesByOrder(order1,closingDate);
+        assertEquals(200, response9.getStatus());
+        assertEquals(jobRoleResponseList, response9.getEntity());
+
+        Response response10 = jobRoleController.getJobRolesByOrder(order2,closingDate);
+        assertEquals(200, response10.getStatus());
+        assertEquals(jobRoleResponseList, response10.getEntity());
+
+    }
+
+    /*
+      When the service getOpenJobRoles returns a SQLException
+      Expect 500 to be returned in response to GetJobRoles
+     */
+    @Test
+    void getJobRolesByOrder_shouldReturn500SQLException_whenGetAllJobRolesReturnsASQLException()
+            throws
+            SQLException, DatabaseConnectionException {
+
+        String order1 = "asc";
+        String order2 = "desc";
+        String name = "name";
+        String capability = "capability";
+        String band = "band";
+        String location = "location";
+        String closingDate= "closingDate";
+
+        when(jobRoleService.jobNameByAscending()).thenThrow(SQLException.class);
+        Response response = jobRoleController.getJobRolesByOrder(order1,name);
+        assertEquals(500, response.getStatus());
+
+        when(jobRoleService.jobNameDescending()).thenThrow(SQLException.class);
+        Response response2 = jobRoleController.getJobRolesByOrder(order2,name);
+        assertEquals(500, response2.getStatus());
+
+        when(jobRoleService.jobBandAscending()).thenThrow(SQLException.class);
+        Response response3 = jobRoleController.getJobRolesByOrder(order1,band);
+        assertEquals(500, response3.getStatus());
+
+        when(jobRoleService.jobBandDescending()).thenThrow(SQLException.class);
+        Response response4 = jobRoleController.getJobRolesByOrder(order2,band);
+        assertEquals(500, response4.getStatus());
+
+        when(jobRoleService.jobCapabilityAscending()).thenThrow(SQLException.class);
+        Response response5 = jobRoleController.getJobRolesByOrder(order1,capability);
+        assertEquals(500, response5.getStatus());
+
+        when(jobRoleService.jobCapabilityDescending()).thenThrow(SQLException.class);
+        Response response6 = jobRoleController.getJobRolesByOrder(order2,capability);
+        assertEquals(500, response6.getStatus());
+
+        when(jobRoleService.jobLocationAscending()).thenThrow(SQLException.class);
+        Response response7 = jobRoleController.getJobRolesByOrder(order1,location);
+        assertEquals(500, response7.getStatus());
+
+        when(jobRoleService.jobLocationDescending()).thenThrow(SQLException.class);
+        Response response8 = jobRoleController.getJobRolesByOrder(order2,location);
+        assertEquals(500, response8.getStatus());
+
+        when(jobRoleService.jobClosingDateAscending()).thenThrow(SQLException.class);
+        Response response9 = jobRoleController.getJobRolesByOrder(order1,closingDate);
+        assertEquals(500, response9.getStatus());
+
+        when(jobRoleService.jobClosingDateDescending()).thenThrow(SQLException.class);
+        Response response10 = jobRoleController.getJobRolesByOrder(order2,closingDate);
+        assertEquals(500, response4.getStatus());
+
+
+    }
+
+    /*
+         When the service getOpenJobRoles in order returns a DataBaseConnectionException
+         Expect 500 to be returned in response to GetJobRoles
+        */
+    @Test
+    void getJobRolesByOrder_shouldReturn500DatabaseConnectionException_whenGetAllJobRolesReturnsADatabaseConnectionException()
+            throws
+            SQLException, DatabaseConnectionException {
+        String order1 = "asc";
+        String order2 = "desc";
+        String name = "name";
+        String capability = "capability";
+        String band = "band";
+        String location = "location";
+        String closingDate= "closingDate";
+
+        when(jobRoleService.jobNameByAscending()).thenThrow(DatabaseConnectionException.class);
+        Response response = jobRoleController.getJobRolesByOrder(order1,name);
+        assertEquals(500, response.getStatus());
+
+        when(jobRoleService.jobNameDescending()).thenThrow(DatabaseConnectionException.class);
+        Response response2 = jobRoleController.getJobRolesByOrder(order2,name);
+        assertEquals(500, response2.getStatus());
+
+        when(jobRoleService.jobBandAscending()).thenThrow(DatabaseConnectionException.class);
+        Response response3 = jobRoleController.getJobRolesByOrder(order1,band);
+        assertEquals(500, response3.getStatus());
+
+        when(jobRoleService.jobBandDescending()).thenThrow(DatabaseConnectionException.class);
+        Response response4 = jobRoleController.getJobRolesByOrder(order2,band);
+        assertEquals(500, response4.getStatus());
+
+        when(jobRoleService.jobCapabilityAscending()).thenThrow(DatabaseConnectionException.class);
+        Response response5 = jobRoleController.getJobRolesByOrder(order1,capability);
+        assertEquals(500, response5.getStatus());
+
+        when(jobRoleService.jobCapabilityDescending()).thenThrow(DatabaseConnectionException.class);
+        Response response6 = jobRoleController.getJobRolesByOrder(order2,capability);
+        assertEquals(500, response6.getStatus());
+
+        when(jobRoleService.jobLocationAscending()).thenThrow(DatabaseConnectionException.class);
+        Response response7 = jobRoleController.getJobRolesByOrder(order1,location);
+        assertEquals(500, response7.getStatus());
+
+        when(jobRoleService.jobLocationDescending()).thenThrow(DatabaseConnectionException.class);
+        Response response8 = jobRoleController.getJobRolesByOrder(order2,location);
+        assertEquals(500, response8.getStatus());
+
+        when(jobRoleService.jobClosingDateAscending()).thenThrow(DatabaseConnectionException.class);
+        Response response9 = jobRoleController.getJobRolesByOrder(order1,closingDate);
+        assertEquals(500, response9.getStatus());
+
+        when(jobRoleService.jobClosingDateDescending()).thenThrow(DatabaseConnectionException.class);
+        Response response10 = jobRoleController.getJobRolesByOrder(order2,closingDate);
+        assertEquals(500, response4.getStatus());
+
+
+
+
+    }
+
+
 }

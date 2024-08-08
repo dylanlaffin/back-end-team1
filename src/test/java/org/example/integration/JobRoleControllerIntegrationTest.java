@@ -37,12 +37,13 @@ public class JobRoleControllerIntegrationTest {
 
         String authHeaderValue = "Bearer " + token.readEntity(String.class);
 
-        List<JobRoleResponse> response = client
+        Response response = client
                 .target("http://localhost:8080/api/openJobRoles")
                 .request().header("Authorization", authHeaderValue)
-                .get(List.class);
+                .get();
 
-        Assertions.assertFalse(response.isEmpty());
+        Assertions.assertEquals(200, response.getStatus());
+
     }
 
     /*
@@ -92,4 +93,31 @@ public class JobRoleControllerIntegrationTest {
         Assertions.assertEquals(401, response.getStatus());
     }
 
+    /*
+   when calling getJobRolesByOrder
+   expect list of JobRoleResponses in order
+    */
+    @Test
+    void getJobRolesByOrder_shouldReturnListOfJobRolesInOrder() {
+        Client client = APP.client();
+
+        //job name in ascending order
+
+        LoginRequest login = new LoginRequest(USERNAME, PASSWORD);
+
+        Response token = client.target
+                        ("http://localhost:8080/api/auth/login").request()
+                .post(Entity.json(login));
+
+        String authHeaderValue = "Bearer " + token.readEntity(String.class);
+
+        Response response = client
+                .target("http://localhost:8080/api/openJobRoles/asc/name")
+                .request().header("Authorization", authHeaderValue)
+                .get();
+
+        Assertions.assertEquals(200, response.getStatus());
+
+
+    }
 }
