@@ -1,6 +1,8 @@
 package org.example.controllers;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Authorization;
 import org.example.exceptions.DoesNotExistException;
 import org.example.exceptions.DatabaseConnectionException;
 import org.example.models.JobRoleResponse;
@@ -72,6 +74,10 @@ public class JobRoleController {
     @GET
     @Path("/{order}/{OrderBy}")
     @Produces(MediaType.APPLICATION_JSON)
+    @RolesAllowed({UserRole.ADMIN, UserRole.USER})
+    @ApiOperation( value = "Returns all open job roles",
+            authorizations = @Authorization(value = HttpHeaders.AUTHORIZATION),
+            response = List.class)
     public Response getJobRolesByOrder(
             @PathParam("order") final String order, @PathParam("OrderBy") String OrderBy) {
             try {
