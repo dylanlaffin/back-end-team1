@@ -65,7 +65,7 @@ public class JobRoleController {
                     jobRoleService.getJobRoleById(id)).build();
         } catch (SQLException | DatabaseConnectionException e) {
             return Response.serverError().build();
-        } catch ( DoesNotExistException e) {
+        } catch (DoesNotExistException e) {
             return Response.status(Response.Status.NOT_FOUND)
                     .entity(e.getMessage()).build();
         }
@@ -81,9 +81,10 @@ public class JobRoleController {
             response = List.class
     )
     public Response getJobRolesByOrder(
-    @PathParam("order") final String order, @PathParam("OrderBy") final String OrderBy) {
+    @PathParam("order") final String order,
+    @PathParam("OrderBy") final String orderBy) {
         try {
-            switch (OrderBy) {
+            switch (orderBy) {
                 case "name":
                     if (order.equals("asc")) {
                         return Response.ok().entity(
